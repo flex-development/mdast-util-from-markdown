@@ -29,6 +29,7 @@
     "noUnusedParameters": false,
     "outDir": "dist",
     "paths": {
+      "@flex-development/mdast-util-from-markdown": ["dist/index", "src/index"],
       "#src": ["src/index"],
       "#src/*": ["src/*"],
       "#tests/*": ["__tests__/*"]

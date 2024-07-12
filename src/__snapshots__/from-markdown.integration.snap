@@ -1,0 +1,1319 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`integration:fromMarkdown > extensions > should support extensions (multiple) 1`] = `
+root[4] (1:1-3:2, 0-4)
+├─0 paragraph[1] (1:1-1:2, 0-1)
+│   └─0 text "a" (1:1-1:2, 0-1)
+├─1 break (1:2-2:1, 1-2)
+├─2 break (2:1-3:1, 2-3)
+│     data: {"blank":true}
+└─3 paragraph[1] (3:1-3:2, 3-4)
+    └─0 text "b" (3:1-3:2, 3-4)
+`;
+
+exports[`integration:fromMarkdown > extensions > should support extensions 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 paragraph[3] (1:1-2:2, 0-3)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-2)
+    └─2 text "b" (2:1-2:2, 2-3)
+`;
+
+exports[`integration:fromMarkdown > fixtures > attention 1`] = `
+root[8] (1:1-22:1, 0-87)
+├─0 paragraph[7] (1:1-4:10, 0-27)
+│   ├─0 emphasis[1] (1:1-1:4, 0-3)
+│   │   └─0 text "a" (1:2-1:3, 1-2)
+│   ├─1 text "\\n" (1:4-2:1, 3-4)
+│   ├─2 strong[1] (2:1-2:6, 4-9)
+│   │   └─0 text "b" (2:3-2:4, 6-7)
+│   ├─3 text "\\n" (2:6-3:1, 9-10)
+│   ├─4 emphasis[1] (3:1-3:8, 10-17)
+│   │   └─0 strong[1] (3:2-3:7, 11-16)
+│   │       └─0 text "c" (3:4-3:5, 13-14)
+│   ├─5 text "\\n" (3:8-4:1, 17-18)
+│   └─6 strong[1] (4:1-4:10, 18-27)
+│       └─0 strong[1] (4:3-4:8, 20-25)
+│           └─0 text "d" (4:5-4:6, 22-23)
+├─1 paragraph[1] (6:1-7:5, 29-38)
+│   └─0 emphasis[3] (6:1-7:5, 29-38)
+│       ├─0 emphasis[1] (6:2-6:5, 30-33)
+│       │   └─0 text "e" (6:3-6:4, 31-32)
+│       ├─1 text "\\n" (6:5-7:1, 33-34)
+│       └─2 emphasis[1] (7:1-7:4, 34-37)
+│           └─0 text "f" (7:2-7:3, 35-36)
+├─2 paragraph[1] (9:1-10:3, 40-45)
+│   └─0 emphasis[1] (9:1-10:3, 40-45)
+│       └─0 text "g\\nh" (9:2-10:2, 41-44)
+├─3 paragraph[1] (12:1-13:4, 47-54)
+│   └─0 strong[1] (12:1-13:4, 47-54)
+│       └─0 text "i\\nj" (12:3-13:2, 49-52)
+├─4 paragraph[2] (15:1-15:6, 56-61)
+│   ├─0 text "**" (15:1-15:3, 56-58)
+│   └─1 emphasis[1] (15:3-15:6, 58-61)
+│       └─0 text "k" (15:4-15:5, 59-60)
+├─5 paragraph[2] (17:1-17:7, 63-69)
+│   ├─0 text "***" (17:1-17:4, 63-66)
+│   └─1 emphasis[1] (17:4-17:7, 66-69)
+│       └─0 text "l" (17:5-17:6, 67-68)
+├─6 paragraph[2] (19:1-19:7, 71-77)
+│   ├─0 text "*" (19:1-19:2, 71-72)
+│   └─1 strong[1] (19:2-19:7, 72-77)
+│       └─0 text "m" (19:4-19:5, 74-75)
+└─7 paragraph[2] (21:1-21:8, 79-86)
+    ├─0 text "**" (21:1-21:3, 79-81)
+    └─1 strong[1] (21:3-21:8, 81-86)
+        └─0 text "m" (21:5-21:6, 83-84)
+`;
+
+exports[`integration:fromMarkdown > fixtures > autolink 1`] = `
+root[3] (1:1-6:1, 0-115)
+├─0 paragraph[3] (1:1-1:34, 0-33)
+│   ├─0 text "An autolink " (1:1-1:13, 0-12)
+│   ├─1 link[1] (1:13-1:33, 12-32)
+│   │   │ title: null
+│   │   │ url: "http://example.com"
+│   │   └─0 text "http://example.com" (1:14-1:32, 13-31)
+│   └─2 text "." (1:33-1:34, 32-33)
+├─1 paragraph[3] (3:1-3:40, 35-74)
+│   ├─0 text "Another autolink " (3:1-3:18, 35-52)
+│   ├─1 link[1] (3:18-3:39, 52-73)
+│   │   │ title: null
+│   │   │ url: "mailto:alpha@bravo.charlie"
+│   │   └─0 text "alpha@bravo.charlie" (3:19-3:38, 53-72)
+│   └─2 text "." (3:39-3:40, 73-74)
+└─2 paragraph[1] (5:1-5:39, 76-114)
+    └─0 text "Not an autolink <alpha.bravo.charlie>." (5:1-5:39, 76-114)
+`;
+
+exports[`integration:fromMarkdown > fixtures > blockquote 1`] = `
+root[5] (1:1-18:1, 0-185)
+├─0 blockquote[1] (1:1-1:16, 0-15)
+│   └─0 paragraph[1] (1:3-1:16, 2-15)
+│       └─0 text "a block quote" (1:3-1:16, 2-15)
+├─1 blockquote[1] (3:1-5:7, 17-59)
+│   └─0 paragraph[1] (3:3-5:7, 19-59)
+│       └─0 text "Another block quote\\nwith two lazy\\nlines." (3:3-5:7, 19-59)
+├─2 blockquote[2] (7:1-8:19, 61-93)
+│   ├─0 paragraph[1] (7:3-7:14, 63-74)
+│   │   └─0 text "Block quote" (7:3-7:14, 63-74)
+│   └─1 heading[1] (8:3-8:19, 77-93)
+│       │ depth: 1
+│       └─0 text "with a heading" (8:5-8:19, 79-93)
+├─3 blockquote[2] (10:1-12:29, 95-143)
+│   ├─0 paragraph[1] (10:3-10:14, 97-108)
+│   │   └─0 text "Block quote" (10:3-10:14, 97-108)
+│   └─1 code "with unclosed fenced code." (11:3-12:29, 111-143)
+│         lang: null
+│         meta: null
+└─4 blockquote[1] (14:1-17:7, 145-184)
+    └─0 paragraph[1] (14:2-17:7, 146-184)
+        └─0 text "Block\\nquote\\nwith and without\\nspace." (14:2-17:7, 146-184)
+`;
+
+exports[`integration:fromMarkdown > fixtures > character-escape 1`] = `
+root[3] (1:1-6:1, 0-104)
+├─0 paragraph[1] (1:1-1:45, 0-44)
+│   └─0 text "Character escapes, such as: *not emphasis*." (1:1-1:45, 0-44)
+├─1 paragraph[1] (3:1-3:15, 46-60)
+│   └─0 text "- not a list." (3:1-3:15, 46-60)
+└─2 paragraph[1] (5:1-5:42, 62-103)
+    └─0 text "Escaping non-punctuation doesn’t work: \\\\1" (5:1-5:42, 62-103)
+`;
+
+exports[`integration:fromMarkdown > fixtures > character-reference 1`] = `
+root[1] (1:1-4:1, 0-126)
+└─0 paragraph[1] (1:1-3:43, 0-125)
+    └─0 text "Character references, such as named: &,\\ndecimal: #, Ӓ, Ϡ, �,\\nand hexadecimal: \\", ആ, ಫ." (1:1-3:43, 0-125)
+`;
+
+exports[`integration:fromMarkdown > fixtures > character-references-everywhere 1`] = `
+root[16] (1:1-49:1, 0-855)
+├─0  blockquote[1] (1:1-1:54, 0-53)
+│    └─0 paragraph[1] (1:3-1:54, 2-53)
+│        └─0 text "However, &MadeUpEntities; are kept in the document." (1:3-1:54, 2-53)
+├─1  blockquote[1] (3:1-3:65, 55-119)
+│    └─0 paragraph[1] (3:3-3:65, 57-119)
+│        └─0 text "Entities even work in the language flag of fenced code blocks:" (3:3-3:65, 57-119)
+├─2  blockquote[1] (5:1-7:6, 121-168)
+│    └─0 code "alert('Hello');" (5:3-7:6, 123-168)
+│          lang: "some©language"
+│          meta: null
+├─3  blockquote[1] (9:1-9:56, 170-225)
+│    └─0 paragraph[2] (9:3-9:56, 172-225)
+│        ├─0 text "And in an auto-link: " (9:3-9:24, 172-193)
+│        └─1 link[1] (9:24-9:56, 193-225)
+│            │ title: null
+│            │ url: "http://example&copy;xample.com"
+│            └─0 text "http://example&copy;xample.com" (9:25-9:55, 194-224)
+├─4  blockquote[1] (11:1-11:58, 227-284)
+│    └─0 paragraph[1] (11:3-11:58, 229-284)
+│        └─0 text "Foo and bar and http://example©xample.com and baz." (11:3-11:58, 229-284)
+├─5  blockquote[1] (13:1-14:43, 286-350)
+│    └─0 paragraph[2] (13:3-14:43, 288-350)
+│        ├─0 text "Or in " (13:3-13:9, 288-294)
+│        └─1 link[1] (13:9-14:43, 294-350)
+│            │ title: "in some pl©ce"
+│            │ url: "~/some©file"
+│            └─0 text "l©nks" (13:10-13:20, 295-305)
+├─6  blockquote[1] (16:1-18:26, 352-423)
+│    └─0 paragraph[2] (16:3-18:26, 354-423)
+│        ├─0 text "Or in " (16:3-16:9, 354-360)
+│        └─1 link[1] (16:9-18:26, 360-423)
+│            │ title: "in some pl©ce"
+│            │ url: "~/some©file"
+│            └─0 text "l©lnks" (16:10-16:21, 361-372)
+├─7  blockquote[1] (20:1-23:43, 425-498)
+│    └─0 paragraph[2] (20:3-23:43, 427-498)
+│        ├─0 text "Or in " (20:3-20:9, 427-433)
+│        └─1 image (20:9-23:43, 433-498)
+│              alt: "\\nl©nks\\n"
+│              title: "in some pl©ce"
+│              url: "~/some©file"
+├─8  thematicBreak (25:1-25:4, 500-503)
+├─9  blockquote[1] (27:1-29:26, 505-577)
+│    └─0 paragraph[2] (27:3-29:26, 507-577)
+│        ├─0 text "Or in " (27:3-27:9, 507-513)
+│        └─1 image (27:9-29:26, 513-577)
+│              alt: "l©lnks"
+│              title: "in some pl©ce"
+│              url: "~/some©file"
+├─10 blockquote[1] (31:1-33:8, 579-612)
+│    └─0 paragraph[1] (31:3-33:8, 581-612)
+│        └─0 text "Or in ![\\nl©nks\\n][12]" (31:3-33:8, 581-612)
+├─11 blockquote[1] (35:1-36:14, 614-674)
+│    └─0 definition (35:3-36:14, 616-674)
+│          identifier: "1"
+│          label: "1"
+│          title: "in some\\npl©ce"
+│          url: "http://example©xample.com"
+├─12 blockquote[1] (38:1-41:14, 676-744)
+│    └─0 definition (38:3-41:14, 678-744)
+│          identifier: "1"
+│          label: "\\n  1\\n"
+│          title: "in some\\npl©ce"
+│          url: "http://example©xample.com"
+├─13 thematicBreak (43:1-43:4, 746-749)
+├─14 blockquote[1] (45:1-46:15, 751-830)
+│    └─0 paragraph[3] (45:3-46:15, 753-830)
+│        ├─0 text "But, entities are not interpreted in " (45:3-45:40, 753-790)
+│        ├─1 inlineCode "inline c&ouml;de" (45:40-45:58, 790-808)
+│        └─2 text ", or in\\ncode blocks:" (45:58-46:15, 808-830)
+└─15 blockquote[1] (48:1-48:23, 832-854)
+     └─0 code "C&Ouml;DE block." (48:3-48:23, 834-854)
+           lang: null
+           meta: null
+`;
+
+exports[`integration:fromMarkdown > fixtures > code-fenced 1`] = `
+root[8] (1:1-32:1, 0-210)
+├─0 code "fenced code" (1:1-3:4, 0-19)
+│     lang: null
+│     meta: null
+├─1 code "fenced code with a language" (5:1-7:4, 21-58)
+│     lang: "js"
+│     meta: null
+├─2 code "fenced code with meta" (9:1-11:4, 60-98)
+│     lang: "js"
+│     meta: "line=1"
+├─3 code "fenced code with tildes" (13:1-15:4, 100-131)
+│     lang: null
+│     meta: null
+├─4 paragraph[1] (17:1-17:22, 133-154)
+│   └─0 inlineCode "not fenced code" (17:1-17:22, 133-154)
+├─5 code "asd" (19:1-21:4, 156-181)
+│     lang: "fenced"
+│     meta: "code~~~"
+├─6 code "\\nasd" (23:1-26:4, 183-195)
+│     lang: null
+│     meta: null
+└─7 code "asd\\n" (28:1-31:4, 197-209)
+      lang: null
+      meta: null
+`;
+
+exports[`integration:fromMarkdown > fixtures > code-indented 1`] = `
+root[7] (1:1-19:1, 0-165)
+├─0 code "indented code\\n\\n\\nmore indented code" (1:1-4:23, 0-42)
+│     lang: null
+│     meta: null
+├─1 paragraph[1] (5:1-5:18, 43-60)
+│   └─0 text "Not indented code" (5:1-5:18, 43-60)
+├─2 code "  more\\n   indent" (7:1-8:14, 62-86)
+│     lang: null
+│     meta: null
+├─3 paragraph[1] (10:1-10:10, 88-97)
+│   └─0 text "Not code." (10:1-10:10, 88-97)
+├─4 code "tabs\\nand mixed with spaces\\n  extra spaces" (12:1-14:16, 99-145)
+│     lang: null
+│     meta: null
+├─5 paragraph[1] (16:1-16:10, 147-156)
+│   └─0 text "Not code." (16:1-16:10, 147-156)
+└─6 code "a tab" (18:1-18:7, 158-164)
+      lang: null
+      meta: null
+`;
+
+exports[`integration:fromMarkdown > fixtures > code-text 1`] = `
+root[2] (1:1-9:1, 0-118)
+├─0 paragraph[17] (1:1-5:4, 0-76)
+│   ├─0  text "A couple of code examples: " (1:1-1:28, 0-27)
+│   ├─1  inlineCode "a" (1:28-1:31, 27-30)
+│   ├─2  text ", " (1:31-1:33, 30-32)
+│   ├─3  inlineCode " b" (1:33-1:37, 32-36)
+│   ├─4  text ", " (1:37-1:39, 36-38)
+│   ├─5  inlineCode "c " (1:39-1:43, 38-42)
+│   ├─6  text ", " (1:43-1:45, 42-44)
+│   ├─7  inlineCode "d" (1:45-1:50, 44-49)
+│   ├─8  text ", " (1:50-1:52, 49-51)
+│   ├─9  inlineCode "e" (1:52-2:2, 51-56)
+│   ├─10 text ", " (2:2-2:4, 56-58)
+│   ├─11 inlineCode "f" (2:4-3:2, 58-63)
+│   ├─12 text ", " (3:2-3:4, 63-65)
+│   ├─13 inlineCode "g\\n" (3:4-4:2, 65-69)
+│   ├─14 text ", " (4:2-4:4, 69-71)
+│   ├─15 inlineCode "\\nh" (4:4-5:3, 71-75)
+│   └─16 text "." (5:3-5:4, 75-76)
+└─1 paragraph[3] (7:1-8:14, 78-117)
+    ├─0 text "And: " (7:1-7:6, 78-83)
+    ├─1 inlineCode "alpha bravo charlie\\n\\tdelta echo" (7:6-8:13, 83-116)
+    └─2 text "." (8:13-8:14, 116-117)
+`;
+
+exports[`integration:fromMarkdown > fixtures > definition 1`] = `
+root[7] (1:1-10:1, 0-76)
+├─0 definition (1:1-1:8, 0-7)
+│     identifier: "a"
+│     label: "a"
+│     title: null
+│     url: ""
+├─1 definition (2:1-2:7, 8-14)
+│     identifier: "a"
+│     label: "a"
+│     title: null
+│     url: "b"
+├─2 definition (3:1-3:11, 15-25)
+│     identifier: "a"
+│     label: "a"
+│     title: "c"
+│     url: "b"
+├─3 definition (4:1-4:11, 26-36)
+│     identifier: "a"
+│     label: "a"
+│     title: "c"
+│     url: "b"
+├─4 definition (5:1-5:11, 37-47)
+│     identifier: "a"
+│     label: "a"
+│     title: "c"
+│     url: "b"
+├─5 definition (6:1-6:9, 48-56)
+│     identifier: "a"
+│     label: "a"
+│     title: null
+│     url: "b"
+└─6 definition (7:1-9:4, 57-75)
+      identifier: "a"
+      label: "a"
+      title: "\\nc d\\ne"
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > fixtures > empty 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > fixtures > hard-break-escape 1`] = `
+root[3] (1:1-9:1, 0-21)
+├─0 paragraph[3] (1:1-2:2, 0-4)
+│   ├─0 text "a" (1:1-1:2, 0-1)
+│   ├─1 break (1:2-2:1, 1-3)
+│   └─2 text "b" (2:1-2:2, 3-4)
+├─1 paragraph[3] (4:1-5:4, 6-12)
+│   ├─0 text "c" (4:1-4:2, 6-7)
+│   ├─1 break (4:2-5:1, 7-9)
+│   └─2 text "d" (5:3-5:4, 11-12)
+└─2 paragraph[3] (7:1-8:2, 14-20)
+    ├─0 text "e  " (7:1-7:4, 14-17)
+    ├─1 break (7:4-8:1, 17-19)
+    └─2 text "f" (8:1-8:2, 19-20)
+`;
+
+exports[`integration:fromMarkdown > fixtures > hard-break-prefix 1`] = `
+root[4] (1:1-11:2, 0-29)
+├─0 paragraph[3] (1:1-2:2, 0-5)
+│   ├─0 text "a" (1:1-1:2, 0-1)
+│   ├─1 break (1:2-2:1, 1-4)
+│   └─2 text "b" (2:1-2:2, 4-5)
+├─1 paragraph[3] (4:1-5:4, 7-14)
+│   ├─0 text "c" (4:1-4:2, 7-8)
+│   ├─1 break (4:2-5:1, 8-11)
+│   └─2 text "d" (5:3-5:4, 13-14)
+├─2 paragraph[3] (7:1-8:2, 16-23)
+│   ├─0 text "e" (7:1-7:2, 16-17)
+│   ├─1 break (7:2-8:1, 17-22)
+│   └─2 text "f" (8:1-8:2, 22-23)
+└─3 paragraph[1] (10:1-11:2, 25-29)
+    └─0 text "g\\nh" (10:1-11:2, 25-29)
+`;
+
+exports[`integration:fromMarkdown > fixtures > heading-atx 1`] = `
+root[11] (1:1-16:1, 0-201)
+├─0  heading[1] (1:1-1:12, 0-11)
+│    │ depth: 1
+│    └─0 text "Heading 1" (1:3-1:12, 2-11)
+├─1  heading[1] (2:1-2:13, 12-24)
+│    │ depth: 2
+│    └─0 text "Heading 2" (2:4-2:13, 15-24)
+├─2  heading[1] (3:1-3:14, 25-38)
+│    │ depth: 3
+│    └─0 text "Heading 3" (3:5-3:14, 29-38)
+├─3  heading[1] (4:1-4:15, 39-53)
+│    │ depth: 4
+│    └─0 text "Heading 4" (4:6-4:15, 44-53)
+├─4  heading[1] (5:1-5:16, 54-69)
+│    │ depth: 5
+│    └─0 text "Heading 5" (5:7-5:16, 60-69)
+├─5  heading[1] (6:1-6:17, 70-86)
+│    │ depth: 6
+│    └─0 text "Heading 6" (6:8-6:17, 77-86)
+├─6  paragraph[1] (7:1-7:20, 87-106)
+│    └─0 text "####### Paragraph 7" (7:1-7:20, 87-106)
+├─7  heading[1] (9:1-9:35, 108-142)
+│    │ depth: 1
+│    └─0 text "Heading w/ a closing sequence" (9:3-9:32, 110-139)
+├─8  paragraph[1] (11:1-11:18, 144-161)
+│    └─0 text "An empty heading:" (11:1-11:18, 144-161)
+├─9  heading[0] (13:1-13:2, 163-164)
+│      depth: 1
+└─10 heading[1] (15:1-15:35, 166-200)
+     │ depth: 2
+     └─0 text "Heading w/ ## hashes ## inside#" (15:4-15:35, 169-200)
+`;
+
+exports[`integration:fromMarkdown > fixtures > heading-setext 1`] = `
+root[5] (1:1-16:1, 0-40)
+├─0 heading[1] (1:1-2:2, 0-3)
+│   │ depth: 1
+│   └─0 text "a" (1:1-1:2, 0-1)
+├─1 heading[1] (4:1-5:2, 5-8)
+│   │ depth: 2
+│   └─0 text "b" (4:1-4:2, 5-6)
+├─2 heading[1] (7:1-8:10, 10-21)
+│   │ depth: 1
+│   └─0 text "c" (7:1-7:2, 10-11)
+├─3 heading[1] (10:3-11:6, 25-32)
+│   │ depth: 2
+│   └─0 text "d" (10:3-10:4, 25-26)
+└─4 heading[1] (13:1-15:2, 34-39)
+    │ depth: 1
+    └─0 text "e\\nf" (13:1-14:2, 34-37)
+`;
+
+exports[`integration:fromMarkdown > fixtures > html-flow 1`] = `
+root[7] (1:1-17:1, 0-72)
+├─0 html "<script>\\na\\n</script>" (1:1-3:10, 0-20)
+├─1 html "<!--b-->" (5:1-5:9, 22-30)
+├─2 html "<?c?>" (7:1-7:6, 32-37)
+├─3 html "<!d>" (9:1-9:5, 39-43)
+├─4 html "<![CDATA[e]]>" (11:1-11:14, 45-58)
+├─5 html "<div\\nf" (13:1-14:2, 60-66)
+└─6 html "<g>" (16:1-16:4, 68-71)
+`;
+
+exports[`integration:fromMarkdown > fixtures > html-text 1`] = `
+root[6] (1:1-12:1, 0-70)
+├─0 paragraph[5] (1:1-1:13, 0-12)
+│   ├─0 text "a " (1:1-1:3, 0-2)
+│   ├─1 html "<b>" (1:3-1:6, 2-5)
+│   ├─2 text "c" (1:6-1:7, 5-6)
+│   ├─3 html "</b>" (1:7-1:11, 6-10)
+│   └─4 text " d" (1:11-1:13, 10-12)
+├─1 paragraph[2] (3:1-3:11, 14-24)
+│   ├─0 text "e " (3:1-3:3, 14-16)
+│   └─1 html "<!--f-->" (3:3-3:11, 16-24)
+├─2 paragraph[2] (5:1-5:8, 26-33)
+│   ├─0 text "g " (5:1-5:3, 26-28)
+│   └─1 html "<?h?>" (5:3-5:8, 28-33)
+├─3 paragraph[2] (7:1-7:7, 35-41)
+│   ├─0 text "i " (7:1-7:3, 35-37)
+│   └─1 html "<!j>" (7:3-7:7, 37-41)
+├─4 paragraph[2] (9:1-9:16, 43-58)
+│   ├─0 text "k " (9:1-9:3, 43-45)
+│   └─1 html "<![CDATA[l]]>" (9:3-9:16, 45-58)
+└─5 paragraph[3] (11:1-11:10, 60-69)
+    ├─0 text "m " (11:1-11:3, 60-62)
+    ├─1 html "<div>" (11:3-11:8, 62-67)
+    └─2 text " n" (11:8-11:10, 67-69)
+`;
+
+exports[`integration:fromMarkdown > fixtures > image-reference 1`] = `
+root[5] (1:1-8:1, 0-119)
+├─0 paragraph[1] (1:1-1:62, 0-61)
+│   └─0 text "Not references, as they’re not defined ![a], ![b][], ![c][d]." (1:1-1:62, 0-61)
+├─1 paragraph[6] (3:1-3:34, 63-96)
+│   ├─0 text "References! " (3:1-3:13, 63-75)
+│   ├─1 imageReference (3:13-3:17, 75-79)
+│   │     alt: "e"
+│   │     label: "e"
+│   │     identifier: "e"
+│   │     referenceType: "shortcut"
+│   ├─2 text ", " (3:17-3:19, 79-81)
+│   ├─3 imageReference (3:19-3:25, 81-87)
+│   │     alt: "f"
+│   │     label: "f"
+│   │     identifier: "f"
+│   │     referenceType: "collapsed"
+│   ├─4 text ", " (3:25-3:27, 87-89)
+│   └─5 imageReference (3:27-3:34, 89-96)
+│         alt: "g"
+│         label: "h"
+│         identifier: "h"
+│         referenceType: "full"
+├─2 definition (5:1-5:7, 98-104)
+│     identifier: "e"
+│     label: "e"
+│     title: null
+│     url: "x"
+├─3 definition (6:1-6:7, 105-111)
+│     identifier: "f"
+│     label: "f"
+│     title: null
+│     url: "y"
+└─4 definition (7:1-7:7, 112-118)
+      identifier: "h"
+      label: "h"
+      title: null
+      url: "z"
+`;
+
+exports[`integration:fromMarkdown > fixtures > image-resource 1`] = `
+root[4] (1:1-8:54, 0-212)
+├─0 paragraph[11] (1:1-1:70, 0-69)
+│   ├─0  text "Resources: " (1:1-1:12, 0-11)
+│   ├─1  image (1:12-1:19, 11-18)
+│   │      alt: "a"
+│   │      title: null
+│   │      url: "b"
+│   ├─2  text ", " (1:19-1:21, 18-20)
+│   ├─3  image (1:21-1:32, 20-31)
+│   │      alt: "c"
+│   │      title: "e"
+│   │      url: "d"
+│   ├─4  text ", " (1:32-1:34, 31-33)
+│   ├─5  image (1:34-1:45, 33-44)
+│   │      alt: "f"
+│   │      title: "h"
+│   │      url: "g"
+│   ├─6  text ", " (1:45-1:47, 44-46)
+│   ├─7  image (1:47-1:58, 46-57)
+│   │      alt: "i"
+│   │      title: "k"
+│   │      url: "j"
+│   ├─8  text ", " (1:58-1:60, 57-59)
+│   ├─9  image (1:60-1:69, 59-68)
+│   │      alt: "l"
+│   │      title: null
+│   │      url: "m"
+│   └─10 text "." (1:69-1:70, 68-69)
+├─1 paragraph[3] (3:1-3:38, 71-108)
+│   ├─0 text "“Content” in images: " (3:1-3:22, 71-92)
+│   ├─1 image (3:22-3:37, 92-107)
+│   │     alt: "a b c"
+│   │     title: null
+│   │     url: "d"
+│   └─2 text "." (3:37-3:38, 107-108)
+├─2 paragraph[3] (5:1-5:14, 110-123)
+│   ├─0 text "Empty: " (5:1-5:8, 110-117)
+│   ├─1 image (5:8-5:13, 117-122)
+│   │     alt: ""
+│   │     title: null
+│   │     url: ""
+│   └─2 text "." (5:13-5:14, 122-123)
+└─3 paragraph[2] (7:1-8:54, 125-212)
+    ├─0 text "Character references and escapes:\\n" (7:1-8:1, 125-159)
+    └─1 image (8:1-8:54, 159-212)
+          alt: "a*b\\tc&d"
+          title: "i*j\\tk&l"
+          url: "e*f\\tg&h"
+`;
+
+exports[`integration:fromMarkdown > fixtures > image-resource-eol 1`] = `
+root[8] (1:1-25:1, 0-127)
+├─0 paragraph[3] (1:1-2:8, 0-12)
+│   ├─0 text "a " (1:1-1:3, 0-2)
+│   ├─1 image (1:3-2:6, 2-10)
+│   │     alt: "\\nb"
+│   │     title: null
+│   │     url: "c"
+│   └─2 text " d" (2:6-2:8, 10-12)
+├─1 paragraph[3] (4:1-5:7, 14-26)
+│   ├─0 text "a " (4:1-4:3, 14-16)
+│   ├─1 image (4:3-5:5, 16-24)
+│   │     alt: "b\\n"
+│   │     title: null
+│   │     url: "c"
+│   └─2 text " d" (5:5-5:7, 24-26)
+├─2 paragraph[3] (7:1-8:8, 28-41)
+│   ├─0 text "a " (7:1-7:3, 28-30)
+│   ├─1 image (7:3-8:6, 30-39)
+│   │     alt: "b\\nc"
+│   │     title: null
+│   │     url: "d"
+│   └─2 text " e" (8:6-8:8, 39-41)
+├─3 paragraph[3] (10:1-11:5, 43-55)
+│   ├─0 text "a " (10:1-10:3, 43-45)
+│   ├─1 image (10:3-11:3, 45-53)
+│   │     alt: "b"
+│   │     title: null
+│   │     url: "c"
+│   └─2 text " d" (11:3-11:5, 53-55)
+├─4 paragraph[3] (13:1-14:4, 57-69)
+│   ├─0 text "a " (13:1-13:3, 57-59)
+│   ├─1 image (13:3-14:2, 59-67)
+│   │     alt: "b"
+│   │     title: null
+│   │     url: "c"
+│   └─2 text " d" (14:2-14:4, 67-69)
+├─5 paragraph[3] (16:1-17:7, 71-86)
+│   ├─0 text "a " (16:1-16:3, 71-73)
+│   ├─1 image (16:3-17:5, 73-84)
+│   │     alt: "b"
+│   │     title: "d"
+│   │     url: "c"
+│   └─2 text " e" (17:5-17:7, 84-86)
+├─6 paragraph[3] (19:1-20:6, 88-105)
+│   ├─0 text "a " (19:1-19:3, 88-90)
+│   ├─1 image (19:3-20:4, 90-103)
+│   │     alt: "b"
+│   │     title: "d\\ne"
+│   │     url: "c"
+│   └─2 text " f" (20:4-20:6, 103-105)
+└─7 paragraph[3] (22:1-24:6, 107-126)
+    ├─0 text "a " (22:1-22:3, 107-109)
+    ├─1 image (22:3-24:4, 109-124)
+    │     alt: "b"
+    │     title: "d\\ne\\nf"
+    │     url: "c"
+    └─2 text " g" (24:4-24:6, 124-126)
+`;
+
+exports[`integration:fromMarkdown > fixtures > link-reference 1`] = `
+root[5] (1:1-8:1, 0-113)
+├─0 paragraph[1] (1:1-1:59, 0-58)
+│   └─0 text "Not references, as they’re not defined [a], [b][], [c][d]." (1:1-1:59, 0-58)
+├─1 paragraph[6] (3:1-3:31, 60-90)
+│   ├─0 text "References! " (3:1-3:13, 60-72)
+│   ├─1 linkReference[1] (3:13-3:16, 72-75)
+│   │   │ label: "e"
+│   │   │ identifier: "e"
+│   │   │ referenceType: "shortcut"
+│   │   └─0 text "e" (3:14-3:15, 73-74)
+│   ├─2 text ", " (3:16-3:18, 75-77)
+│   ├─3 linkReference[1] (3:18-3:23, 77-82)
+│   │   │ label: "f"
+│   │   │ identifier: "f"
+│   │   │ referenceType: "collapsed"
+│   │   └─0 text "f" (3:19-3:20, 78-79)
+│   ├─4 text ", " (3:23-3:25, 82-84)
+│   └─5 linkReference[1] (3:25-3:31, 84-90)
+│       │ label: "h"
+│       │ identifier: "h"
+│       │ referenceType: "full"
+│       └─0 text "g" (3:26-3:27, 85-86)
+├─2 definition (5:1-5:7, 92-98)
+│     identifier: "e"
+│     label: "e"
+│     title: null
+│     url: "x"
+├─3 definition (6:1-6:7, 99-105)
+│     identifier: "f"
+│     label: "f"
+│     title: null
+│     url: "y"
+└─4 definition (7:1-7:7, 106-112)
+      identifier: "h"
+      label: "h"
+      title: null
+      url: "z"
+`;
+
+exports[`integration:fromMarkdown > fixtures > link-reference-with-phrasing 1`] = `
+root[8] (1:1-16:1, 0-168)
+├─0 paragraph[13] (1:1-7:9, 0-64)
+│   ├─0  linkReference[1] (1:1-1:8, 0-7)
+│   │    │ label: "\`f\`"
+│   │    │ identifier: "\`f\`"
+│   │    │ referenceType: "collapsed"
+│   │    └─0 inlineCode "f" (1:2-1:5, 1-4)
+│   ├─1  text "\\n" (1:8-2:1, 7-8)
+│   ├─2  linkReference[1] (2:1-2:11, 8-18)
+│   │    │ label: ";"
+│   │    │ identifier: "&semi;"
+│   │    │ referenceType: "collapsed"
+│   │    └─0 text ";" (2:2-2:8, 9-15)
+│   ├─3  text "\\n" (2:11-3:1, 18-19)
+│   ├─4  linkReference[1] (3:1-3:7, 19-25)
+│   │    │ label: ";"
+│   │    │ identifier: "\\\\;"
+│   │    │ referenceType: "collapsed"
+│   │    └─0 text ";" (3:2-3:4, 20-22)
+│   ├─5  text "\\n" (3:7-4:1, 25-26)
+│   ├─6  linkReference[1] (4:1-4:6, 26-31)
+│   │    │ label: ";"
+│   │    │ identifier: ";"
+│   │    │ referenceType: "collapsed"
+│   │    └─0 text ";" (4:2-4:3, 27-28)
+│   ├─7  text "\\n" (4:6-5:1, 31-32)
+│   ├─8  linkReference[2] (5:1-5:14, 32-45)
+│   │    │ label: "\`f\`;"
+│   │    │ identifier: "\`f\`&semi;"
+│   │    │ referenceType: "collapsed"
+│   │    ├─0 inlineCode "f" (5:2-5:5, 33-36)
+│   │    └─1 text ";" (5:5-5:11, 36-42)
+│   ├─9  text "\\n" (5:14-6:1, 45-46)
+│   ├─10 linkReference[2] (6:1-6:10, 46-55)
+│   │    │ label: "\`f\`;"
+│   │    │ identifier: "\`f\`\\\\;"
+│   │    │ referenceType: "collapsed"
+│   │    ├─0 inlineCode "f" (6:2-6:5, 47-50)
+│   │    └─1 text ";" (6:5-6:7, 50-52)
+│   ├─11 text "\\n" (6:10-7:1, 55-56)
+│   └─12 linkReference[2] (7:1-7:9, 56-64)
+│        │ label: "\`f\`;"
+│        │ identifier: "\`f\`;"
+│        │ referenceType: "collapsed"
+│        ├─0 inlineCode "f" (7:2-7:5, 57-60)
+│        └─1 text ";" (7:5-7:6, 60-61)
+├─1 definition (9:1-9:13, 66-78)
+│     identifier: "\`f\`"
+│     label: "\`f\`"
+│     title: null
+│     url: "alpha"
+├─2 definition (10:1-10:16, 79-94)
+│     identifier: "&semi;"
+│     label: ";"
+│     title: null
+│     url: "bravo"
+├─3 definition (11:1-11:14, 95-108)
+│     identifier: "\\\\;"
+│     label: ";"
+│     title: null
+│     url: "charlie"
+├─4 definition (12:1-12:11, 109-119)
+│     identifier: ";"
+│     label: ";"
+│     title: null
+│     url: "delta"
+├─5 definition (13:1-13:18, 120-137)
+│     identifier: "\`f\`&semi;"
+│     label: "\`f\`;"
+│     title: null
+│     url: "echo"
+├─6 definition (14:1-14:17, 138-154)
+│     identifier: "\`f\`\\\\;"
+│     label: "\`f\`;"
+│     title: null
+│     url: "foxtrot"
+└─7 definition (15:1-15:13, 155-167)
+      identifier: "\`f\`;"
+      label: "\`f\`;"
+      title: null
+      url: "golf"
+`;
+
+exports[`integration:fromMarkdown > fixtures > link-resource 1`] = `
+root[4] (1:1-8:53, 0-204)
+├─0 paragraph[11] (1:1-1:65, 0-64)
+│   ├─0  text "Resources: " (1:1-1:12, 0-11)
+│   ├─1  link[1] (1:12-1:18, 11-17)
+│   │    │ title: null
+│   │    │ url: "b"
+│   │    └─0 text "a" (1:13-1:14, 12-13)
+│   ├─2  text ", " (1:18-1:20, 17-19)
+│   ├─3  link[1] (1:20-1:30, 19-29)
+│   │    │ title: "e"
+│   │    │ url: "d"
+│   │    └─0 text "c" (1:21-1:22, 20-21)
+│   ├─4  text ", " (1:30-1:32, 29-31)
+│   ├─5  link[1] (1:32-1:42, 31-41)
+│   │    │ title: "h"
+│   │    │ url: "g"
+│   │    └─0 text "f" (1:33-1:34, 32-33)
+│   ├─6  text ", " (1:42-1:44, 41-43)
+│   ├─7  link[1] (1:44-1:54, 43-53)
+│   │    │ title: "k"
+│   │    │ url: "j"
+│   │    └─0 text "i" (1:45-1:46, 44-45)
+│   ├─8  text ", " (1:54-1:56, 53-55)
+│   ├─9  link[1] (1:56-1:64, 55-63)
+│   │    │ title: null
+│   │    │ url: "m"
+│   │    └─0 text "l" (1:57-1:58, 56-57)
+│   └─10 text "." (1:64-1:65, 63-64)
+├─1 paragraph[3] (3:1-3:37, 66-102)
+│   ├─0 text "“Content” in images: " (3:1-3:22, 66-87)
+│   ├─1 link[4] (3:22-3:36, 87-101)
+│   │   │ title: null
+│   │   │ url: "d"
+│   │   ├─0 text "a " (3:23-3:25, 88-90)
+│   │   ├─1 emphasis[1] (3:25-3:28, 90-93)
+│   │   │   └─0 text "b" (3:26-3:27, 91-92)
+│   │   ├─2 text " " (3:28-3:29, 93-94)
+│   │   └─3 inlineCode "c" (3:29-3:32, 94-97)
+│   └─2 text "." (3:36-3:37, 101-102)
+├─2 paragraph[3] (5:1-5:13, 104-116)
+│   ├─0 text "Empty: " (5:1-5:8, 104-111)
+│   ├─1 link[0] (5:8-5:12, 111-115)
+│   │     title: null
+│   │     url: ""
+│   └─2 text "." (5:12-5:13, 115-116)
+└─3 paragraph[2] (7:1-8:53, 118-204)
+    ├─0 text "Character references and escapes:\\n" (7:1-8:1, 118-152)
+    └─1 link[1] (8:1-8:53, 152-204)
+        │ title: "i*j\\tk&l"
+        │ url: "e*f\\tg&h"
+        └─0 text "a*b\\tc&d" (8:2-8:17, 153-168)
+`;
+
+exports[`integration:fromMarkdown > fixtures > link-resource-eol 1`] = `
+root[8] (1:1-25:1, 0-119)
+├─0 paragraph[3] (1:1-2:8, 0-11)
+│   ├─0 text "a " (1:1-1:3, 0-2)
+│   ├─1 link[1] (1:3-2:6, 2-9)
+│   │   │ title: null
+│   │   │ url: "c"
+│   │   └─0 text "\\nb" (1:4-2:2, 3-5)
+│   └─2 text " d" (2:6-2:8, 9-11)
+├─1 paragraph[3] (4:1-5:7, 13-24)
+│   ├─0 text "a " (4:1-4:3, 13-15)
+│   ├─1 link[1] (4:3-5:5, 15-22)
+│   │   │ title: null
+│   │   │ url: "c"
+│   │   └─0 text "b\\n" (4:4-5:1, 16-18)
+│   └─2 text " d" (5:5-5:7, 22-24)
+├─2 paragraph[3] (7:1-8:8, 26-38)
+│   ├─0 text "a " (7:1-7:3, 26-28)
+│   ├─1 link[1] (7:3-8:6, 28-36)
+│   │   │ title: null
+│   │   │ url: "d"
+│   │   └─0 text "b\\nc" (7:4-8:2, 29-32)
+│   └─2 text " e" (8:6-8:8, 36-38)
+├─3 paragraph[3] (10:1-11:5, 40-51)
+│   ├─0 text "a " (10:1-10:3, 40-42)
+│   ├─1 link[1] (10:3-11:3, 42-49)
+│   │   │ title: null
+│   │   │ url: "c"
+│   │   └─0 text "b" (10:4-10:5, 43-44)
+│   └─2 text " d" (11:3-11:5, 49-51)
+├─4 paragraph[3] (13:1-14:4, 53-64)
+│   ├─0 text "a " (13:1-13:3, 53-55)
+│   ├─1 link[1] (13:3-14:2, 55-62)
+│   │   │ title: null
+│   │   │ url: "c"
+│   │   └─0 text "b" (13:4-13:5, 56-57)
+│   └─2 text " d" (14:2-14:4, 62-64)
+├─5 paragraph[3] (16:1-17:7, 66-80)
+│   ├─0 text "a " (16:1-16:3, 66-68)
+│   ├─1 link[1] (16:3-17:5, 68-78)
+│   │   │ title: "d"
+│   │   │ url: "c"
+│   │   └─0 text "b" (16:4-16:5, 69-70)
+│   └─2 text " e" (17:5-17:7, 78-80)
+├─6 paragraph[3] (19:1-20:6, 82-98)
+│   ├─0 text "a " (19:1-19:3, 82-84)
+│   ├─1 link[1] (19:3-20:4, 84-96)
+│   │   │ title: "d\\ne"
+│   │   │ url: "c"
+│   │   └─0 text "b" (19:4-19:5, 85-86)
+│   └─2 text " f" (20:4-20:6, 96-98)
+└─7 paragraph[3] (22:1-24:6, 100-118)
+    ├─0 text "a " (22:1-22:3, 100-102)
+    ├─1 link[1] (22:3-24:4, 102-116)
+    │   │ title: "d\\ne\\nf"
+    │   │ url: "c"
+    │   └─0 text "b" (22:4-22:5, 103-104)
+    └─2 text " g" (24:4-24:6, 116-118)
+`;
+
+exports[`integration:fromMarkdown > fixtures > list 1`] = `
+root[11] (1:1-60:1, 0-218)
+├─0  list[3] (1:1-3:5, 0-14)
+│    │ ordered: true
+│    │ spread: false
+│    │ start: 1
+│    ├─0 listItem[1] (1:1-1:5, 0-4)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (1:4-1:5, 3-4)
+│    │       └─0 text "a" (1:4-1:5, 3-4)
+│    ├─1 listItem[1] (2:1-2:5, 5-9)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (2:4-2:5, 8-9)
+│    │       └─0 text "b" (2:4-2:5, 8-9)
+│    └─2 listItem[1] (3:1-3:5, 10-14)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (3:4-3:5, 13-14)
+│            └─0 text "c" (3:4-3:5, 13-14)
+├─1  list[1] (5:1-5:4, 16-19)
+│    │ ordered: false
+│    │ spread: false
+│    │ start: null
+│    └─0 listItem[1] (5:1-5:4, 16-19)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (5:3-5:4, 18-19)
+│            └─0 text "d" (5:3-5:4, 18-19)
+├─2  list[2] (7:1-13:6, 21-63)
+│    │ ordered: true
+│    │ spread: false
+│    │ start: 1
+│    ├─0 listItem[3] (7:1-11:6, 21-51)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   ├─0 paragraph[1] (7:5-7:6, 25-26)
+│    │   │   └─0 text "e" (7:5-7:6, 25-26)
+│    │   ├─1 code "" (8:5-10:8, 31-45)
+│    │   │     lang: "js"
+│    │   │     meta: null
+│    │   └─2 paragraph[1] (11:5-11:6, 50-51)
+│    │       └─0 text "f" (11:5-11:6, 50-51)
+│    └─1 listItem[1] (12:1-13:6, 52-63)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (12:5-13:6, 56-63)
+│            └─0 text "g\\nh" (12:5-13:6, 56-63)
+├─3  list[1] (15:1-17:4, 65-73)
+│    │ ordered: false
+│    │ spread: false
+│    │ start: null
+│    └─0 listItem[2] (15:1-17:4, 65-73)
+│        │ checked: null
+│        │ spread: true
+│        ├─0 paragraph[1] (15:3-15:4, 67-68)
+│        │   └─0 text "i" (15:3-15:4, 67-68)
+│        └─1 paragraph[1] (17:3-17:4, 72-73)
+│            └─0 text "j" (17:3-17:4, 72-73)
+├─4  list[2] (19:1-21:4, 75-83)
+│    │ ordered: false
+│    │ spread: true
+│    │ start: null
+│    ├─0 listItem[1] (19:1-19:4, 75-78)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (19:3-19:4, 77-78)
+│    │       └─0 text "k" (19:3-19:4, 77-78)
+│    └─1 listItem[1] (21:1-21:4, 80-83)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (21:3-21:4, 82-83)
+│            └─0 text "l" (21:3-21:4, 82-83)
+├─5  list[2] (23:1-24:6, 85-95)
+│    │ ordered: true
+│    │ spread: false
+│    │ start: 9
+│    ├─0 listItem[1] (23:1-23:5, 85-89)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (23:4-23:5, 88-89)
+│    │       └─0 text "m" (23:4-23:5, 88-89)
+│    └─1 listItem[1] (24:1-24:6, 90-95)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (24:5-24:6, 94-95)
+│            └─0 text "n" (24:5-24:6, 94-95)
+├─6  list[2] (26:1-31:6, 97-118)
+│    │ ordered: false
+│    │ spread: false
+│    │ start: null
+│    ├─0 listItem[1] (26:1-27:4, 97-102)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (27:3-27:4, 101-102)
+│    │       └─0 text "o" (27:3-27:4, 101-102)
+│    └─1 listItem[1] (28:1-31:6, 103-118)
+│        │ checked: null
+│        │ spread: false
+│        └─0 code "" (29:3-31:6, 107-118)
+│              lang: "p"
+│              meta: null
+├─7  list[5] (33:1-45:4, 120-163)
+│    │ ordered: false
+│    │ spread: true
+│    │ start: null
+│    ├─0 listItem[2] (33:1-35:4, 120-130)
+│    │   │ checked: null
+│    │   │ spread: true
+│    │   ├─0 paragraph[1] (33:3-33:4, 122-123)
+│    │   │   └─0 text "q" (33:3-33:4, 122-123)
+│    │   └─1 paragraph[1] (35:3-35:4, 129-130)
+│    │       └─0 text "r" (35:3-35:4, 129-130)
+│    ├─1 listItem[1] (36:1-37:4, 131-136)
+│    │   │ checked: null
+│    │   │ spread: false
+│    │   └─0 paragraph[1] (37:3-37:4, 135-136)
+│    │       └─0 text "s" (37:3-37:4, 135-136)
+│    ├─2 listItem[2] (38:1-41:4, 137-149)
+│    │   │ checked: null
+│    │   │ spread: true
+│    │   ├─0 paragraph[1] (38:3-38:4, 139-140)
+│    │   │   └─0 text "t" (38:3-38:4, 139-140)
+│    │   └─1 paragraph[1] (41:3-41:4, 148-149)
+│    │       └─0 text "u" (41:3-41:4, 148-149)
+│    ├─3 listItem[0] (42:1-42:3, 150-152)
+│    │     checked: null
+│    │     spread: false
+│    └─4 listItem[1] (45:1-45:4, 160-163)
+│        │ checked: null
+│        │ spread: false
+│        └─0 paragraph[1] (45:3-45:4, 162-163)
+│            └─0 text "v" (45:3-45:4, 162-163)
+├─8  blockquote[1] (47:1-49:6, 165-178)
+│    └─0 list[2] (47:3-49:6, 167-178)
+│        │ ordered: false
+│        │ spread: true
+│        │ start: null
+│        ├─0 listItem[1] (47:3-47:6, 167-170)
+│        │   │ checked: null
+│        │   │ spread: false
+│        │   └─0 paragraph[1] (47:5-47:6, 169-170)
+│        │       └─0 text "w" (47:5-47:6, 169-170)
+│        └─1 listItem[1] (49:3-49:6, 175-178)
+│            │ checked: null
+│            │ spread: false
+│            └─0 paragraph[1] (49:5-49:6, 177-178)
+│                └─0 text "x" (49:5-49:6, 177-178)
+├─9  list[1] (51:1-56:3, 180-202)
+│    │ ordered: false
+│    │ spread: false
+│    │ start: null
+│    └─0 listItem[2] (51:1-56:3, 180-202)
+│        │ checked: null
+│        │ spread: true
+│        ├─0 paragraph[1] (51:3-51:4, 182-183)
+│        │   └─0 text "y" (51:3-51:4, 182-183)
+│        └─1 list[2] (53:3-56:3, 187-202)
+│            │ ordered: true
+│            │ spread: true
+│            │ start: 1
+│            ├─0 listItem[1] (53:3-53:7, 187-191)
+│            │   │ checked: null
+│            │   │ spread: false
+│            │   └─0 paragraph[1] (53:6-53:7, 190-191)
+│            │       └─0 text "z" (53:6-53:7, 190-191)
+│            └─1 listItem[1] (55:3-55:7, 195-199)
+│                │ checked: null
+│                │ spread: false
+│                └─0 paragraph[1] (55:6-55:7, 198-199)
+│                    └─0 text "a" (55:6-55:7, 198-199)
+└─10 list[1] (57:1-59:7, 203-217)
+     │ ordered: false
+     │ spread: false
+     │ start: null
+     └─0 listItem[1] (57:1-59:7, 203-217)
+         │ checked: null
+         │ spread: false
+         └─0 list[2] (57:3-59:7, 205-217)
+             │ ordered: true
+             │ spread: true
+             │ start: 1
+             ├─0 listItem[1] (57:3-57:7, 205-209)
+             │   │ checked: null
+             │   │ spread: false
+             │   └─0 paragraph[1] (57:6-57:7, 208-209)
+             │       └─0 text "b" (57:6-57:7, 208-209)
+             └─1 listItem[1] (59:3-59:7, 213-217)
+                 │ checked: null
+                 │ spread: false
+                 └─0 paragraph[1] (59:6-59:7, 216-217)
+                     └─0 text "c" (59:6-59:7, 216-217)
+`;
+
+exports[`integration:fromMarkdown > fixtures > paragraph 1`] = `
+root[4] (1:1-12:1, 0-88)
+├─0 paragraph[1] (1:1-1:19, 0-18)
+│   └─0 text "A short paragraph." (1:1-1:19, 0-18)
+├─1 paragraph[1] (3:1-4:18, 20-39)
+│   └─0 text "A\\nlonger paragraph." (3:1-4:18, 20-39)
+├─2 paragraph[1] (7:1-7:22, 42-63)
+│   └─0 text "A couple blank lines." (7:1-7:22, 42-63)
+└─3 paragraph[1] (11:1-11:21, 67-87)
+    └─0 text "Lots of blank lines." (11:1-11:21, 67-87)
+`;
+
+exports[`integration:fromMarkdown > fixtures > thematic-break 1`] = `
+root[7] (1:1-14:1, 0-41)
+├─0 thematicBreak (1:1-1:4, 0-3)
+├─1 thematicBreak (3:1-3:4, 5-8)
+├─2 paragraph[1] (5:1-5:4, 10-13)
+│   └─0 text "+++" (5:1-5:4, 10-13)
+├─3 thematicBreak (7:1-7:6, 15-20)
+├─4 paragraph[1] (9:1-9:9, 22-30)
+│   └─0 text "++ ++ ++" (9:1-9:9, 22-30)
+├─5 thematicBreak (11:1-11:4, 32-35)
+└─6 paragraph[1] (13:1-13:4, 37-40)
+    └─0 text "-+-" (13:1-13:4, 37-40)
+`;
+
+exports[`integration:fromMarkdown > should parse autolink (email) 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 paragraph[1] (1:1-1:11, 0-10)
+    └─0 link[1] (1:1-1:11, 0-10)
+        │ title: null
+        │ url: "mailto:aa@bb.cc"
+        └─0 text "aa@bb.cc" (1:2-1:10, 1-9)
+`;
+
+exports[`integration:fromMarkdown > should parse autolink (protocol) 1`] = `
+root[1] (1:1-1:10, 0-9)
+└─0 paragraph[1] (1:1-1:10, 0-9)
+    └─0 link[1] (1:1-1:10, 0-9)
+        │ title: null
+        │ url: "tel:123"
+        └─0 text "tel:123" (1:2-1:9, 1-8)
+`;
+
+exports[`integration:fromMarkdown > should parse blockquote 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 blockquote[1] (1:1-1:4, 0-3)
+    └─0 paragraph[1] (1:3-1:4, 2-3)
+        └─0 text "a" (1:3-1:4, 2-3)
+`;
+
+exports[`integration:fromMarkdown > should parse character escape 1`] = `
+root[1] (1:1-1:5, 0-4)
+└─0 paragraph[1] (1:1-1:5, 0-4)
+    └─0 text "a*b" (1:1-1:5, 0-4)
+`;
+
+exports[`integration:fromMarkdown > should parse character reference 1`] = `
+root[1] (1:1-1:8, 0-7)
+└─0 paragraph[1] (1:1-1:8, 0-7)
+    └─0 text "a&b" (1:1-1:8, 0-7)
+`;
+
+exports[`integration:fromMarkdown > should parse code (fenced) 1`] = `
+root[1] (1:1-3:4, 0-12)
+└─0 code "c" (1:1-3:4, 0-12)
+      lang: "a"
+      meta: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse code (indented) 1`] = `
+root[1] (1:1-1:6, 0-5)
+└─0 code "a" (1:1-1:6, 0-5)
+      lang: null
+      meta: null
+`;
+
+exports[`integration:fromMarkdown > should parse code (text) 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 paragraph[1] (1:1-1:4, 0-3)
+    └─0 inlineCode "a" (1:1-1:4, 0-3)
+`;
+
+exports[`integration:fromMarkdown > should parse definition 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 definition (1:1-1:11, 0-10)
+      identifier: "a"
+      label: "a"
+      title: "c"
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse emphasis 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 paragraph[1] (1:1-1:4, 0-3)
+    └─0 emphasis[1] (1:1-1:4, 0-3)
+        └─0 text "a" (1:2-1:3, 1-2)
+`;
+
+exports[`integration:fromMarkdown > should parse empty (document) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse empty (nil) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse empty (typed array) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse hard break (escape) 1`] = `
+root[1] (1:1-2:2, 0-4)
+└─0 paragraph[3] (1:1-2:2, 0-4)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-3)
+    └─2 text "b" (2:1-2:2, 3-4)
+`;
+
+exports[`integration:fromMarkdown > should parse hard break (prefix) 1`] = `
+root[1] (1:1-2:2, 0-5)
+└─0 paragraph[3] (1:1-2:2, 0-5)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-4)
+    └─2 text "b" (2:1-2:2, 4-5)
+`;
+
+exports[`integration:fromMarkdown > should parse heading (atx) 1`] = `
+root[1] (1:1-1:5, 0-4)
+└─0 heading[1] (1:1-1:5, 0-4)
+    │ depth: 2
+    └─0 text "a" (1:4-1:5, 3-4)
+`;
+
+exports[`integration:fromMarkdown > should parse heading (setext) 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 heading[1] (1:1-2:2, 0-3)
+    │ depth: 1
+    └─0 text "a" (1:1-1:2, 0-1)
+`;
+
+exports[`integration:fromMarkdown > should parse html (flow) 1`] = `
+root[1] (1:1-3:5, 0-10)
+└─0 html "<a>\\nb\\n</a>" (1:1-3:5, 0-10)
+`;
+
+exports[`integration:fromMarkdown > should parse html (text) 1`] = `
+root[1] (1:1-1:9, 0-8)
+└─0 paragraph[3] (1:1-1:9, 0-8)
+    ├─0 html "<a>" (1:1-1:4, 0-3)
+    ├─1 text "b" (1:4-1:5, 3-4)
+    └─2 html "</a>" (1:5-1:9, 4-8)
+`;
+
+exports[`integration:fromMarkdown > should parse image (collapsed reference) 1`] = `
+root[2] (1:1-3:7, 0-14)
+├─0 paragraph[1] (1:1-1:7, 0-6)
+│   └─0 imageReference (1:1-1:7, 0-6)
+│         alt: "a"
+│         label: "a"
+│         identifier: "a"
+│         referenceType: "collapsed"
+└─1 definition (3:1-3:7, 8-14)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse image (full reference) 1`] = `
+root[2] (1:1-3:7, 0-15)
+├─0 paragraph[1] (1:1-1:8, 0-7)
+│   └─0 imageReference (1:1-1:8, 0-7)
+│         alt: "a"
+│         label: "b"
+│         identifier: "b"
+│         referenceType: "full"
+└─1 definition (3:1-3:7, 9-15)
+      identifier: "b"
+      label: "b"
+      title: null
+      url: "c"
+`;
+
+exports[`integration:fromMarkdown > should parse image (resource) 1`] = `
+root[1] (1:1-1:12, 0-11)
+└─0 paragraph[1] (1:1-1:12, 0-11)
+    └─0 image (1:1-1:12, 0-11)
+          alt: "a"
+          title: "c"
+          url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse image (shortcut reference) 1`] = `
+root[2] (1:1-3:7, 0-12)
+├─0 paragraph[1] (1:1-1:5, 0-4)
+│   └─0 imageReference (1:1-1:5, 0-4)
+│         alt: "a"
+│         label: "a"
+│         identifier: "a"
+│         referenceType: "shortcut"
+└─1 definition (3:1-3:7, 6-12)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (collapsed reference + inline code label) 1`] = `
+root[2] (1:1-3:9, 0-17)
+├─0 paragraph[1] (1:1-1:8, 0-7)
+│   └─0 linkReference[1] (1:1-1:8, 0-7)
+│       │ label: "\`a\`"
+│       │ identifier: "\`a\`"
+│       │ referenceType: "collapsed"
+│       └─0 inlineCode "a" (1:2-1:5, 1-4)
+└─1 definition (3:1-3:9, 9-17)
+      identifier: "\`a\`"
+      label: "\`a\`"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (collapsed reference) 1`] = `
+root[2] (1:1-3:7, 0-13)
+├─0 paragraph[1] (1:1-1:6, 0-5)
+│   └─0 linkReference[1] (1:1-1:6, 0-5)
+│       │ label: "a"
+│       │ identifier: "a"
+│       │ referenceType: "collapsed"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 7-13)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (full reference) 1`] = `
+root[2] (1:1-3:7, 0-14)
+├─0 paragraph[1] (1:1-1:7, 0-6)
+│   └─0 linkReference[1] (1:1-1:7, 0-6)
+│       │ label: "b"
+│       │ identifier: "b"
+│       │ referenceType: "full"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 8-14)
+      identifier: "b"
+      label: "b"
+      title: null
+      url: "c"
+`;
+
+exports[`integration:fromMarkdown > should parse link (resource) 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 paragraph[1] (1:1-1:11, 0-10)
+    └─0 link[1] (1:1-1:11, 0-10)
+        │ title: "c"
+        │ url: "b"
+        └─0 text "a" (1:2-1:3, 1-2)
+`;
+
+exports[`integration:fromMarkdown > should parse link (shortcut reference) 1`] = `
+root[2] (1:1-3:7, 0-11)
+├─0 paragraph[1] (1:1-1:4, 0-3)
+│   └─0 linkReference[1] (1:1-1:4, 0-3)
+│       │ label: "a"
+│       │ identifier: "a"
+│       │ referenceType: "shortcut"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 5-11)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse paragraph 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 paragraph[1] (1:1-2:2, 0-3)
+    └─0 text "a\\nb" (1:1-2:2, 0-3)
+`;
+
+exports[`integration:fromMarkdown > should parse strong 1`] = `
+root[1] (1:1-1:6, 0-5)
+└─0 paragraph[1] (1:1-1:6, 0-5)
+    └─0 strong[1] (1:1-1:6, 0-5)
+        └─0 text "a" (1:3-1:4, 2-3)
+`;
+
+exports[`integration:fromMarkdown > should parse thematic break 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 thematicBreak (1:1-1:4, 0-3)
+`;

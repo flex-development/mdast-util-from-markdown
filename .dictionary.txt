@@ -8,6 +8,7 @@ dessant
 docast
 dohm
 dprint
+exitatxheadingsequence
 fbca
 ggshield
 gpgsign
@@ -17,6 +18,7 @@ kaisugi
 lcov
 lintstagedrc
 mdast
+mdxjs
 mkbuild
 mlly
 nocheck
@@ -27,5 +29,6 @@ preid
 shfmt
 unstub
 vates
+vfile
 vitest
 yarnrc

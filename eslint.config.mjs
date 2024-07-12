@@ -18,7 +18,28 @@ export default [
       '!**/typings/**/dist/',
       '**/.yarn/',
       '**/coverage/',
-      '**/dist/'
+      '**/dist/',
+      '__fixtures__/*.md'
     ]
+  },
+  {
+    files: ['**/__tests__/*.spec.ts'],
+    languageOptions: {
+      globals: {
+        files: true
+      }
+    }
+  },
+  {
+    files: ['__fixtures__/*.json'],
+    rules: {
+      'jsonc/sort-keys': 0
+    }
+  },
+  {
+    files: ['example.mjs'],
+    rules: {
+      'jsdoc/require-file-overview': 0
+    }
   }
 ]

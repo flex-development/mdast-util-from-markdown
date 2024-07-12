@@ -1041,6 +1041,8 @@ export default [
       'jest-formatting/padding-around-describe-blocks': 1,
       'jest-formatting/padding-around-expect-groups': 1,
       'jest-formatting/padding-around-test-blocks': 1,
+      'jsdoc/require-description': 0,
+      'jsdoc/require-jsdoc': 0,
       'no-control-regex': 0,
       'no-empty-pattern': 0,
       'promise/prefer-await-to-callbacks': 0,

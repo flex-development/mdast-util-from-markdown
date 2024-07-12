@@ -1,7 +1,11 @@
 {
   "exclude": ["**/coverage", "**/dist", "**/node_modules"],
   "extends": "./tsconfig.json",
-  "files": ["vitest-env.d.ts"],
+  "files": [
+    "typings/mdast/index.d.mts",
+    "typings/test/global.d.mts",
+    "typings/test/vitest-env.d.ts"
+  ],
   "include": [
     "__fixtures__/**/**.ts",
     "__tests__/**/**.ts",

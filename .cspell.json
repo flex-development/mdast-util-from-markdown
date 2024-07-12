@@ -28,6 +28,7 @@
     ".husky/_/",
     ".vscode/settings.json",
     ".yarn/",
+    "__fixtures__/*.md",
     "dist/",
     "patches/",
     "yarn.lock"
