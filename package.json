@@ -159,7 +159,7 @@
     "lint-staged": "15.2.7",
     "mdast-util-to-hast": "13.2.0",
     "node-notifier": "10.0.1",
-    "prettier": "3.3.2",
+    "prettier": "3.3.3",
     "remark": "15.0.1",
     "remark-directive": "3.0.0",
     "remark-frontmatter": "5.0.0",
