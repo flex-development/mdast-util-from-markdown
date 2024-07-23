@@ -123,8 +123,8 @@
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.48",
     "@typescript-eslint/parser": "8.0.0-alpha.48",
     "@vates/toggle-scripts": "1.0.0",
-    "@vitest/coverage-v8": "2.0.3",
-    "@vitest/ui": "2.0.3",
+    "@vitest/coverage-v8": "2.0.4",
+    "@vitest/ui": "2.0.4",
     "chai": "5.1.1",
     "chai-quantifiers": "1.0.18",
     "chai-string": "1.5.0",
@@ -173,7 +173,7 @@
     "vfile": "6.0.2",
     "vfile-find-down": "7.1.0",
     "vite-tsconfig-paths": "4.3.2",
-    "vitest": "2.0.3",
+    "vitest": "2.0.4",
     "yaml-eslint-parser": "1.2.3"
   },
   "resolutions": {
