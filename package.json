@@ -153,7 +153,7 @@
     "growl": "1.10.5",
     "hast-util-from-html": "2.0.1",
     "hast-util-to-html": "9.0.1",
-    "husky": "9.1.1",
+    "husky": "9.1.2",
     "is-ci": "3.0.1",
     "jsonc-eslint-parser": "2.4.0",
     "lint-staged": "15.2.7",
