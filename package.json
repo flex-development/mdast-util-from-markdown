@@ -149,7 +149,7 @@
     "eslint-plugin-promise": "7.0.0",
     "eslint-plugin-unicorn": "55.0.0",
     "eslint-plugin-yml": "1.14.0",
-    "globals": "15.8.0",
+    "globals": "15.9.0",
     "growl": "1.10.5",
     "hast-util-from-html": "2.0.1",
     "hast-util-to-html": "9.0.1",
