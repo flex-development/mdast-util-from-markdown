@@ -1693,7 +1693,7 @@ __metadata:
     eslint-plugin-yml: "npm:1.14.0"
     globals: "npm:15.9.0"
     growl: "npm:1.10.5"
-    hast-util-from-html: "npm:2.0.1"
+    hast-util-from-html: "npm:2.0.2"
     hast-util-to-html: "npm:9.0.1"
     husky: "npm:9.1.5"
     is-ci: "npm:3.0.1"
@@ -5919,9 +5919,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-from-html@npm:2.0.1":
-  version: 2.0.1
-  resolution: "hast-util-from-html@npm:2.0.1"
+"hast-util-from-html@npm:2.0.2":
+  version: 2.0.2
+  resolution: "hast-util-from-html@npm:2.0.2"
   dependencies:
     "@types/hast": "npm:^3.0.0"
     devlop: "npm:^1.1.0"
@@ -5929,7 +5929,7 @@ __metadata:
     parse5: "npm:^7.0.0"
     vfile: "npm:^6.0.0"
     vfile-message: "npm:^4.0.0"
-  checksum: 10/5e8111c28fa4aa7cbb2d57b41bf4ff771641332c6e0704900367acbe0b3f5e5c432a82df80815d4fe91ac8137c264f72c8632fd7704992ebbddc6c0712b78582
+  checksum: 10/1c762bee8f116f4217dae2be5d09c45b1dd81765f35beb4f70447facbc0463cb206bd280ecb650b5a7dcf2b0d583cca1454fe7e466fac828b69977b13a578215
   languageName: node
   linkType: hard
 
