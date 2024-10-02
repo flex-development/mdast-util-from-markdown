@@ -105,7 +105,7 @@
     "@flex-development/grease": "3.0.0-alpha.9",
     "@flex-development/mkbuild": "1.0.0-alpha.23",
     "@flex-development/mlly": "1.0.0-alpha.18",
-    "@flex-development/pathe": "2.0.0",
+    "@flex-development/pathe": "3.0.0",
     "@flex-development/tutils": "6.0.0-alpha.25",
     "@flex-development/unist-util-inspect": "1.0.1",
     "@flex-development/unist-util-types": "1.6.1",
