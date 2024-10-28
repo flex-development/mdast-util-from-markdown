@@ -84,7 +84,7 @@
     "@types/unist": "3.0.2",
     "decode-named-character-reference": "1.0.2",
     "devlop": "1.1.0",
-    "mdast-util-from-markdown": "2.0.1",
+    "mdast-util-from-markdown": "2.0.2",
     "mdast-util-to-string": "4.0.0",
     "micromark": "4.0.0",
     "micromark-util-decode-numeric-character-reference": "2.0.1",
