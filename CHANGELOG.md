@@ -1,3 +1,14 @@
+## [1.2.0](https://github.com/flex-development/mdast-util-from-markdown/compare/1.1.0...1.2.0) (2026-10-12)
+
+### :robot: Continuous Integration
+
+- [[`b0f4b0a`](https://github.com/flex-development/mdast-util-from-markdown/commit/b0f4b0a90fa09294a79e906d016d4b90e925508e)] **deps:** bump dprint/check from 2.3 to 2.5 ([#237](https://github.com/flex-development/mdast-util-from-markdown/issues/237))
+- [[`e57391e`](https://github.com/flex-development/mdast-util-from-markdown/commit/e57391e578154dc3403b3e8bfc5f2f194751cc74)] **deps:** bump streetsidesoftware/cspell-action from 8.4.0 to 9.1.0 ([#238](https://github.com/flex-development/mdast-util-from-markdown/issues/238))
+
+### :sparkles: Features
+
+- [[`cc5677c`](https://github.com/flex-development/mdast-util-from-markdown/commit/cc5677c2dbf2c916b08172f67d5433bbca527d53)] `preprocess`, `takeExtension`
+
 ## [1.1.0](https://github.com/flex-development/mdast-util-from-markdown/compare/1.0.0...1.1.0) (2026-10-11)
 
 ### :package: Build
@@ -172,6 +183,7 @@
 ### :house_with_garden: Housekeeping
 
 - [[`d7c462c`](https://github.com/flex-development/mdast-util-from-markdown/commit/d7c462c623da49e224d2802f9ae57dd0564899e9)] initial commit
+
 
 
 
