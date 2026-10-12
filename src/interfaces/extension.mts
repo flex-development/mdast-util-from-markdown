@@ -49,7 +49,7 @@ interface Extension {
   beforeExit?: Handle | Handle[] | null | undefined
 
   /**
-   * The list of token types where line endings are allowed.
+   * The list of token types where line endings are used.
    */
   canContainEols?: string[] | undefined
 

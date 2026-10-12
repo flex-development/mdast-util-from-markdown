@@ -56,7 +56,8 @@ function config(this: void, env: ConfigEnv): ViteUserConfig {
           '**/__mocks__/',
           '**/__tests__/',
           '**/interfaces/',
-          '**/types/'
+          '**/types/',
+          'src/mdast.mts'
         ],
         ignoreClassMethods: [],
         include: ['src/**/**/*.mts'],

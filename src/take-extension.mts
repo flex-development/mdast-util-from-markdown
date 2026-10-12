@@ -1,6 +1,6 @@
 /**
- * @file Internal - takeExtension
- * @module mdast-util-from-markdown/internal/takeExtension
+ * @file takeExtension
+ * @module mdast-util-from-markdown/takeExtension
  */
 
 import type {
@@ -12,7 +12,9 @@ import type {
 /**
  * Merge `extension` into the `combined` configuration.
  *
- * @internal
+ * @see {@linkcode Config}
+ * @see {@linkcode Extension}
+ * @see {@linkcode TakeExtension}
  *
  * @type {TakeExtension}
  *

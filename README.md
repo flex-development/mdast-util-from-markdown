@@ -25,6 +25,8 @@
 - [API](#api)
   - [`fromMarkdown(value[, encoding][, options])`][api-from-markdown]
   - [`compiler([options])`][api-compiler]
+  - [`preprocess(events)`][api-preprocess]
+  - [`takeExtension(combined, extension[, field])`][api-take-extension]
   - [creators][api-creators]
   - [handles][api-handles]
 - [Types](#types)
@@ -141,7 +143,8 @@ root[1] (1:1-2:1, 0-19)
 
 ## API
 
-This package exports the identifiers [`fromMarkdown`][api-from-markdown] and [`compiler`][api-compiler].\
+This package exports the identifiers [`fromMarkdown`][api-from-markdown], [`compiler`][api-compiler],
+[`preprocess`][api-preprocess], and [`takeExtension`][api-take-extension].\
 The default export is `fromMarkdown`.
 
 Additional exports are located at [`@flex-development/mdast-util-from-markdown/creators`][api-creators]
@@ -184,6 +187,38 @@ Create an mdast compiler.
 #### Returns
 
 ([`Compiler`][types-compiler]) The mdast compiler
+
+### `preprocess(events)`
+
+Prepare `events` before compilation begins.
+
+#### Parameters
+
+- **`this`** ([`mark.Context`][mark-ast-context])
+  — the event compilation context
+- `events` ([`mark.Event[]`][mark-parse-event])
+  — the current list of events
+
+#### Returns
+
+(`undefined`) Nothing
+
+### `takeExtension(combined, extension[, field])`
+
+Merge `extension` into the `combined` configuration.
+
+#### Parameters
+
+- `combined` ([`mark.Config`][mark-ast-config])
+  — the current configuration
+- `extension` ([`mark.Extension`][mark-ast-extension])
+  — the extension to merge
+- `field` ([`keyof mark.Extension`][mark-ast-extension] | `undefined`, optional)
+  — the current `extension` field
+
+#### Returns
+
+(`undefined`) Nothing
 
 ### creators
 
@@ -534,7 +569,7 @@ type OnExitError = (
 
 ### `Options`
 
-Configuration options (TypeScript type).
+Configuration options (`interface`).
 
 #### Extends
 
@@ -613,7 +648,7 @@ See [`micromark-util-types`][micromark-util-types] for more info.
 
 ### `TokenizeContext`
 
-A context object that helps with tokenizing markdown constructs (TypeScript interface).
+A context object that helps with tokenizing markdown constructs (`interface`).
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
@@ -716,6 +751,10 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 [api-handles]: #handles
 
+[api-preprocess]: #preprocessevents
+
+[api-take-extension]: #takeextensioncombined-extension-field
+
 [encoding]: https://nodejs.org/api/util.html#whatwg-supported-encodings
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
@@ -753,6 +792,14 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
 
 [mdast]: https://github.com/syntax-tree/mdast
+
+[mark-ast-config]: https://github.com/flex-development/mark/blob/main/src/ast/interfaces/config.mts
+
+[mark-ast-context]: https://github.com/flex-development/mark/blob/main/src/ast/types/context.mts
+
+[mark-ast-extension]: https://github.com/flex-development/mark/blob/main/src/ast/interfaces/extension.mts
+
+[mark-parse-event]: https://github.com/flex-development/mark/blob/main/src/parse/types/event.mts
 
 [micromark-extension]: https://github.com/micromark/micromark#extensions
 

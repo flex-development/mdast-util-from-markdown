@@ -1,6 +1,6 @@
 /**
- * @file Type Tests - StackedNode
- * @module mdast-util-from-markdown/types/tests/unit-d/StackedNode
+ * @file Type Tests - Node
+ * @module mdast-util-from-markdown/types/tests/unit-d/Node
  */
 
 import type { Fragment } from '@flex-development/mdast-util-from-markdown'
@@ -8,7 +8,7 @@ import type mdast from 'mdast'
 import { describe, expectTypeOf, it } from 'vitest'
 import type TestSubject from '../node.mts'
 
-describe('unit-d:types/StackedNode', () => {
+describe('unit-d:types/Node', () => {
   it('should extract Fragment', () => {
     expectTypeOf<TestSubject>().extract<Fragment>().not.toBeNever()
   })

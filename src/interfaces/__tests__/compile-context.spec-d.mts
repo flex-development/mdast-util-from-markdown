@@ -4,6 +4,7 @@
  */
 
 import type * as mark from '@flex-development/mark/ast'
+import type { SliceSerialize } from '@flex-development/mark/parse'
 import type {
   Buffer,
   CompileData,
@@ -56,6 +57,12 @@ describe('unit-d:interfaces/CompileContext', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('resume')
       .toEqualTypeOf<Resume>()
+  })
+
+  it('should match [sliceSerialize: SliceSerialize]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('sliceSerialize')
+      .toEqualTypeOf<SliceSerialize>()
   })
 
   it('should match [stack: Node[]]', () => {

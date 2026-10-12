@@ -3,7 +3,7 @@
  * @module mdast-util-from-markdown/interfaces/CompileContext
  */
 
-import type * as mark from '@flex-development/mark/ast'
+import type { SliceSerialize } from '@flex-development/mark/parse'
 import type {
   Buffer,
   CompileData,
@@ -31,12 +31,8 @@ import type { Event, Token } from 'micromark-util-types'
  * compilation behavior.
  * After the initial compilation, {@linkcode Transform}s can be applied to
  * manipulate the final tree.
- *
- * @see {@linkcode mark.CompileContext}
- *
- * @extends {mark.CompileContext}
  */
-interface CompileContext extends mark.CompileContext {
+interface CompileContext {
   /**
    * Start capturing output into a temporary node.
    *
@@ -92,6 +88,13 @@ interface CompileContext extends mark.CompileContext {
    * @override
    */
   resume: Resume
+
+  /**
+   * Get the string value of a token.
+   *
+   * @see {@linkcode SliceSerialize}
+   */
+  sliceSerialize: SliceSerialize
 
   /**
    * The node stack.

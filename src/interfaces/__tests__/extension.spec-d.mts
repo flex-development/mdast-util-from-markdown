@@ -17,12 +17,6 @@ describe('unit-d:interfaces/Extension', () => {
     expectTypeOf<keyof TestSubject>().toEqualTypeOf<OptionalKeys<TestSubject>>()
   })
 
-  it('should match [canContainEols?: string[] | undefined]', () => {
-    expectTypeOf<TestSubject>()
-      .toHaveProperty('canContainEols')
-      .toEqualTypeOf<string[] | undefined>()
-  })
-
   it('should match [afterEnter?: Handle | Handle[] | null | undefined]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('afterEnter')
@@ -45,6 +39,12 @@ describe('unit-d:interfaces/Extension', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('beforeExit')
       .toEqualTypeOf<Nilable<Handle | Handle[]>>()
+  })
+
+  it('should match [canContainEols?: string[] | undefined]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('canContainEols')
+      .toEqualTypeOf<string[] | undefined>()
   })
 
   it('should match [enter?: Handles | undefined]', () => {

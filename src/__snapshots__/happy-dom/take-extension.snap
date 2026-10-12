@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (0) 1`] = `
+exports[`unit:takeExtension > should merge extension field into \`combined\` (0) 1`] = `
 {
   "afterEnter": [],
   "afterExit": [],
@@ -13,7 +13,7 @@ exports[`unit:internal/takeExtension > should merge extension field into \`combi
 }
 `;
 
-exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (1) 1`] = `
+exports[`unit:takeExtension > should merge extension field into \`combined\` (1) 1`] = `
 {
   "afterEnter": [],
   "afterExit": [],
@@ -29,7 +29,7 @@ exports[`unit:internal/takeExtension > should merge extension field into \`combi
 }
 `;
 
-exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (2) 1`] = `
+exports[`unit:takeExtension > should merge extension field into \`combined\` (2) 1`] = `
 {
   "afterEnter": [],
   "afterExit": [],

@@ -1,6 +1,6 @@
 /**
  * @file Unit Tests - takeExtension
- * @module mdast-util-from-markdown/internal/tests/unit/takeExtension
+ * @module mdast-util-from-markdown/tests/unit/takeExtension
  */
 
 import type {
@@ -10,7 +10,7 @@ import type {
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import testSubject from '../take-extension.mts'
 
-describe('unit:internal/takeExtension', () => {
+describe('unit:takeExtension', () => {
   let combined: Config
 
   beforeEach(() => {

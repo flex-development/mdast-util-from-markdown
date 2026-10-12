@@ -5,5 +5,7 @@ exports[`e2e:mdast-util-from-markdown > should expose public api 1`] = `
   "compiler",
   "default",
   "fromMarkdown",
+  "preprocess",
+  "takeExtension",
 ]
 `;
