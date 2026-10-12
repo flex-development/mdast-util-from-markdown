@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:internal/point > should return new point ({"column":3,"line":13,"offset":2}) 1`] = `
+{
+  "column": 3,
+  "line": 13,
+  "offset": 2,
+}
+`;
+
+exports[`unit:internal/point > should return new point (null) 1`] = `
+{
+  "column": 1,
+  "line": 1,
+  "offset": 0,
+}
+`;

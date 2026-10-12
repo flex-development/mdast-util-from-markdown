@@ -20,6 +20,7 @@
     "rewrap.wrappingColumn": 130
   },
   "[markdown]": {
+    "editor.formatOnSave": true,
     "editor.rulers": [
       {
         "color": "var(--vscode-editorRuler-foreground)",
@@ -39,6 +40,9 @@
     "editor.wordWrapColumn": 120,
     "rewrap.wrappingColumn": 120
   },
+  "[plaintext]": {
+    "files.trimTrailingWhitespace": false
+  },
   "[shellscript]": {
     "editor.rulers": [
       {
@@ -46,13 +50,6 @@
         "column": 100
       }
     ],
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 100,
-    "rewrap.wrappingColumn": 100
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml",
-    "editor.rulers": [100],
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 100,
     "rewrap.wrappingColumn": 100
@@ -110,11 +107,12 @@
   "emmet.showExpandedAbbreviation": "always",
   "emmet.triggerExpansionOnTab": true,
   "eslint.enable": true,
-  "eslint.experimental.useFlatConfig": true,
   "eslint.lintTask.enable": true,
+  "eslint.nodePath": "node_modules",
   "eslint.options": {},
   "eslint.runtime": "node",
   "eslint.trace.server": "messages",
+  "eslint.useFlatConfig": true,
   "eslint.validate": [
     "css",
     "github-actions-workflow",
@@ -133,8 +131,9 @@
     "*.log": "log",
     "*.snap": "jest-snapshot",
     ".env.zsh": "shellscript",
-    ".markdownlintignore": "ignore",
+    "*.map": "json",
     ".npmrc": "ini",
+    ".remarkignore": "ignore",
     "commit-msg": "shellscript",
     "pre-commit": "shellscript",
     "pre-push": "shellscript"
@@ -149,31 +148,24 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "githubPullRequests.pullBranch": "never",
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
-  "javascript.format.semicolons": "remove",
-  "javascript.inlayHints.enumMemberValues.enabled": true,
-  "javascript.preferences.importModuleSpecifierEnding": "minimal",
-  "javascript.preferences.quoteStyle": "single",
-  "javascript.preferences.useAliasesForRenames": true,
-  "javascript.suggest.completeFunctionCalls": true,
-  "javascript.suggest.completeJSDocs": true,
-  "javascript.suggest.includeAutomaticOptionalChainCompletions": true,
-  "javascript.suggest.includeCompletionsForImportStatements": true,
-  "javascript.suggest.jsdoc.generateReturns": true,
-  "javascript.suggest.paths": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "javascript.validate.enable": true,
+  "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "js/ts.format.insertSpaceAfterTypeAssertion": true,
+  "js/ts.format.semicolons": "remove",
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "js/ts.preferences.importModuleSpecifierEnding": "minimal",
+  "js/ts.preferences.includePackageJsonAutoImports": "on",
+  "js/ts.preferences.quoteStyle": "single",
+  "js/ts.preferences.useAliasesForRenames": true,
+  "js/ts.suggest.completeFunctionCalls": true,
+  "js/ts.suggest.includeAutomaticOptionalChainCompletions": true,
+  "js/ts.suggest.includeCompletionsForImportStatements": true,
+  "js/ts.suggest.jsdoc.generateReturns": true,
+  "js/ts.suggest.paths": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "markdown.extension.toc.slugifyMode": "github",
   "markdown.extension.toc.updateOnSave": false,
-  "markdownlint.ignore": ".markdownlintignore",
-  "markdownlint.lintWorkspaceGlobs": [
-    "**/*.md",
-    "!**/node_modules",
-    "!**/.git",
-    "!**/CHANGELOG.md",
-    "!**/LICENSE.md",
-    "!**/RELEASE_NOTES.md"
-  ],
   "mdx.trace.server.verbosity": "verbose",
   "rewrap.autoWrap.enabled": true,
   "rewrap.doubleSentenceSpacing": true,
@@ -218,23 +210,6 @@
   "todo-tree.tree.showCountsInTree": true,
   "todo-tree.tree.showCurrentScanMode": true,
   "todo-tree.tree.trackFile": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
-  "typescript.format.insertSpaceAfterTypeAssertion": true,
-  "typescript.format.semicolons": "remove",
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.preferences.importModuleSpecifierEnding": "minimal",
-  "typescript.preferences.includePackageJsonAutoImports": "on",
-  "typescript.preferences.quoteStyle": "single",
-  "typescript.preferences.useAliasesForRenames": true,
-  "typescript.suggest.completeFunctionCalls": true,
-  "typescript.suggest.completeJSDocs": true,
-  "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
-  "typescript.suggest.includeCompletionsForImportStatements": true,
-  "typescript.suggest.jsdoc.generateReturns": true,
-  "typescript.suggest.paths": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.validate.enable": true,
   "versionlens.npm.dependencyProperties": [
     "dependencies",
     "devDependencies",
@@ -242,12 +217,7 @@
   ],
   "vsicons.associations.files": [
     {
-      "extensions": [".eslintrc.base.cjs"],
-      "format": "svg",
-      "icon": "eslint"
-    },
-    {
-      "extensions": ["build.json", "cjs.json", "typecheck.json"],
+      "extensions": ["build.json", "typecheck.json"],
       "format": "svg",
       "icon": "tsconfig"
     },
@@ -257,14 +227,9 @@
       "icon": "vitest"
     },
     {
-      "extensions": ["spec-d.ts"],
+      "extensions": ["spec-d.mts"],
       "format": "svg",
       "icon": "testts"
-    },
-    {
-      "extensions": ["yarnrc.yml"],
-      "format": "svg",
-      "icon": "yarn"
     }
   ],
   "vsicons.associations.folders": [
@@ -282,11 +247,6 @@
       "extensions": ["internal"],
       "format": "svg",
       "icon": "private"
-    },
-    {
-      "extensions": ["namespaces"],
-      "format": "svg",
-      "icon": "module"
     },
     {
       "extensions": ["patches"],

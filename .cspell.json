@@ -13,7 +13,7 @@
   "failFast": false,
   "flagWords": [],
   "ignorePaths": [
-    "**/*.log",
+    "**/*.patch",
     "**/*.snap",
     "**/*.wasm",
     "**/.*ignore",
@@ -28,19 +28,11 @@
     ".husky/_/",
     ".vscode/settings.json",
     ".yarn/",
-    "__fixtures__/*.md",
-    "dist/",
     "patches/",
     "yarn.lock"
   ],
-  "ignoreRegExpList": [
-    "/@flex-development\\/.*/",
-    "/from\\s+(['\"]).*\\1/",
-    "devlop",
-    "gmsy",
-    "import\\(.*\\)"
-  ],
-  "ignoreWords": [],
+  "ignoreRegExpList": [],
+  "ignoreWords": ["fldv"],
   "language": "en-US",
   "patterns": [],
   "readonly": true,

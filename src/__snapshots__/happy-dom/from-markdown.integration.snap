@@ -1,0 +1,283 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`integration:fromMarkdown > extensions > should support extensions (multiple) 1`] = `
+root[4] (1:1-3:2, 0-4)
+├─0 paragraph[1] (1:1-1:2, 0-1)
+│   └─0 text "a" (1:1-1:2, 0-1)
+├─1 break (1:2-2:1, 1-2)
+├─2 break (2:1-3:1, 2-3)
+│     data: {"blank":true}
+└─3 paragraph[1] (3:1-3:2, 3-4)
+    └─0 text "b" (3:1-3:2, 3-4)
+`;
+
+exports[`integration:fromMarkdown > extensions > should support extensions 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 paragraph[3] (1:1-2:2, 0-3)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-2)
+    └─2 text "b" (2:1-2:2, 2-3)
+`;
+
+exports[`integration:fromMarkdown > should parse autolink (email) 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 paragraph[1] (1:1-1:11, 0-10)
+    └─0 link[1] (1:1-1:11, 0-10)
+        │ title: null
+        │ url: "mailto:aa@bb.cc"
+        └─0 text "aa@bb.cc" (1:2-1:10, 1-9)
+`;
+
+exports[`integration:fromMarkdown > should parse autolink (protocol) 1`] = `
+root[1] (1:1-1:10, 0-9)
+└─0 paragraph[1] (1:1-1:10, 0-9)
+    └─0 link[1] (1:1-1:10, 0-9)
+        │ title: null
+        │ url: "tel:123"
+        └─0 text "tel:123" (1:2-1:9, 1-8)
+`;
+
+exports[`integration:fromMarkdown > should parse blockquote 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 blockquote[1] (1:1-1:4, 0-3)
+    └─0 paragraph[1] (1:3-1:4, 2-3)
+        └─0 text "a" (1:3-1:4, 2-3)
+`;
+
+exports[`integration:fromMarkdown > should parse character escape 1`] = `
+root[1] (1:1-1:5, 0-4)
+└─0 paragraph[1] (1:1-1:5, 0-4)
+    └─0 text "a*b" (1:1-1:5, 0-4)
+`;
+
+exports[`integration:fromMarkdown > should parse character reference 1`] = `
+root[1] (1:1-1:8, 0-7)
+└─0 paragraph[1] (1:1-1:8, 0-7)
+    └─0 text "a&b" (1:1-1:8, 0-7)
+`;
+
+exports[`integration:fromMarkdown > should parse code (fenced) 1`] = `
+root[1] (1:1-3:4, 0-12)
+└─0 code "c" (1:1-3:4, 0-12)
+      lang: "a"
+      meta: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse code (indented) 1`] = `
+root[1] (1:1-1:6, 0-5)
+└─0 code "a" (1:1-1:6, 0-5)
+      lang: null
+      meta: null
+`;
+
+exports[`integration:fromMarkdown > should parse code (text) 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 paragraph[1] (1:1-1:4, 0-3)
+    └─0 inlineCode "a" (1:1-1:4, 0-3)
+`;
+
+exports[`integration:fromMarkdown > should parse definition 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 definition (1:1-1:11, 0-10)
+      identifier: "a"
+      label: "a"
+      title: "c"
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse emphasis 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 paragraph[1] (1:1-1:4, 0-3)
+    └─0 emphasis[1] (1:1-1:4, 0-3)
+        └─0 text "a" (1:2-1:3, 1-2)
+`;
+
+exports[`integration:fromMarkdown > should parse empty (document) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse empty (nil) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse empty (typed array) 1`] = `root[0] (1:1-1:1, 0-0)`;
+
+exports[`integration:fromMarkdown > should parse hard break (escape) 1`] = `
+root[1] (1:1-2:2, 0-4)
+└─0 paragraph[3] (1:1-2:2, 0-4)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-3)
+    └─2 text "b" (2:1-2:2, 3-4)
+`;
+
+exports[`integration:fromMarkdown > should parse hard break (prefix) 1`] = `
+root[1] (1:1-2:2, 0-5)
+└─0 paragraph[3] (1:1-2:2, 0-5)
+    ├─0 text "a" (1:1-1:2, 0-1)
+    ├─1 break (1:2-2:1, 1-4)
+    └─2 text "b" (2:1-2:2, 4-5)
+`;
+
+exports[`integration:fromMarkdown > should parse heading (atx) 1`] = `
+root[1] (1:1-1:5, 0-4)
+└─0 heading[1] (1:1-1:5, 0-4)
+    │ depth: 2
+    └─0 text "a" (1:4-1:5, 3-4)
+`;
+
+exports[`integration:fromMarkdown > should parse heading (setext) 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 heading[1] (1:1-2:2, 0-3)
+    │ depth: 1
+    └─0 text "a" (1:1-1:2, 0-1)
+`;
+
+exports[`integration:fromMarkdown > should parse html (flow) 1`] = `
+root[1] (1:1-3:5, 0-10)
+└─0 html "<a>\\nb\\n</a>" (1:1-3:5, 0-10)
+`;
+
+exports[`integration:fromMarkdown > should parse html (text) 1`] = `
+root[1] (1:1-1:9, 0-8)
+└─0 paragraph[3] (1:1-1:9, 0-8)
+    ├─0 html "<a>" (1:1-1:4, 0-3)
+    ├─1 text "b" (1:4-1:5, 3-4)
+    └─2 html "</a>" (1:5-1:9, 4-8)
+`;
+
+exports[`integration:fromMarkdown > should parse image (collapsed reference) 1`] = `
+root[2] (1:1-3:7, 0-14)
+├─0 paragraph[1] (1:1-1:7, 0-6)
+│   └─0 imageReference (1:1-1:7, 0-6)
+│         alt: "a"
+│         label: "a"
+│         identifier: "a"
+│         referenceType: "collapsed"
+└─1 definition (3:1-3:7, 8-14)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse image (full reference) 1`] = `
+root[2] (1:1-3:7, 0-15)
+├─0 paragraph[1] (1:1-1:8, 0-7)
+│   └─0 imageReference (1:1-1:8, 0-7)
+│         alt: "a"
+│         label: "b"
+│         identifier: "b"
+│         referenceType: "full"
+└─1 definition (3:1-3:7, 9-15)
+      identifier: "b"
+      label: "b"
+      title: null
+      url: "c"
+`;
+
+exports[`integration:fromMarkdown > should parse image (resource) 1`] = `
+root[1] (1:1-1:12, 0-11)
+└─0 paragraph[1] (1:1-1:12, 0-11)
+    └─0 image (1:1-1:12, 0-11)
+          alt: "a"
+          title: "c"
+          url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse image (shortcut reference) 1`] = `
+root[2] (1:1-3:7, 0-12)
+├─0 paragraph[1] (1:1-1:5, 0-4)
+│   └─0 imageReference (1:1-1:5, 0-4)
+│         alt: "a"
+│         label: "a"
+│         identifier: "a"
+│         referenceType: "shortcut"
+└─1 definition (3:1-3:7, 6-12)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (collapsed reference + inline code label) 1`] = `
+root[2] (1:1-3:9, 0-17)
+├─0 paragraph[1] (1:1-1:8, 0-7)
+│   └─0 linkReference[1] (1:1-1:8, 0-7)
+│       │ label: "\`a\`"
+│       │ identifier: "\`a\`"
+│       │ referenceType: "collapsed"
+│       └─0 inlineCode "a" (1:2-1:5, 1-4)
+└─1 definition (3:1-3:9, 9-17)
+      identifier: "\`a\`"
+      label: "\`a\`"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (collapsed reference) 1`] = `
+root[2] (1:1-3:7, 0-13)
+├─0 paragraph[1] (1:1-1:6, 0-5)
+│   └─0 linkReference[1] (1:1-1:6, 0-5)
+│       │ label: "a"
+│       │ identifier: "a"
+│       │ referenceType: "collapsed"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 7-13)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse link (full reference) 1`] = `
+root[2] (1:1-3:7, 0-14)
+├─0 paragraph[1] (1:1-1:7, 0-6)
+│   └─0 linkReference[1] (1:1-1:7, 0-6)
+│       │ label: "b"
+│       │ identifier: "b"
+│       │ referenceType: "full"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 8-14)
+      identifier: "b"
+      label: "b"
+      title: null
+      url: "c"
+`;
+
+exports[`integration:fromMarkdown > should parse link (resource) 1`] = `
+root[1] (1:1-1:11, 0-10)
+└─0 paragraph[1] (1:1-1:11, 0-10)
+    └─0 link[1] (1:1-1:11, 0-10)
+        │ title: "c"
+        │ url: "b"
+        └─0 text "a" (1:2-1:3, 1-2)
+`;
+
+exports[`integration:fromMarkdown > should parse link (shortcut reference) 1`] = `
+root[2] (1:1-3:7, 0-11)
+├─0 paragraph[1] (1:1-1:4, 0-3)
+│   └─0 linkReference[1] (1:1-1:4, 0-3)
+│       │ label: "a"
+│       │ identifier: "a"
+│       │ referenceType: "shortcut"
+│       └─0 text "a" (1:2-1:3, 1-2)
+└─1 definition (3:1-3:7, 5-11)
+      identifier: "a"
+      label: "a"
+      title: null
+      url: "b"
+`;
+
+exports[`integration:fromMarkdown > should parse paragraph 1`] = `
+root[1] (1:1-2:2, 0-3)
+└─0 paragraph[1] (1:1-2:2, 0-3)
+    └─0 text "a\\nb" (1:1-2:2, 0-3)
+`;
+
+exports[`integration:fromMarkdown > should parse strong 1`] = `
+root[1] (1:1-1:6, 0-5)
+└─0 paragraph[1] (1:1-1:6, 0-5)
+    └─0 strong[1] (1:1-1:6, 0-5)
+        └─0 text "a" (1:3-1:4, 2-3)
+`;
+
+exports[`integration:fromMarkdown > should parse thematic break 1`] = `
+root[1] (1:1-1:4, 0-3)
+└─0 thematicBreak (1:1-1:4, 0-3)
+`;

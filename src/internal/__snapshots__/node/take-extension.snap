@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (0) 1`] = `
+{
+  "afterEnter": [],
+  "afterExit": [],
+  "beforeEnter": [],
+  "beforeExit": [],
+  "canContainEols": [],
+  "enter": {},
+  "exit": {},
+  "transforms": [],
+}
+`;
+
+exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (1) 1`] = `
+{
+  "afterEnter": [],
+  "afterExit": [],
+  "beforeEnter": [],
+  "beforeExit": [],
+  "canContainEols": [
+    "heading",
+    "paragraph",
+  ],
+  "enter": {},
+  "exit": {},
+  "transforms": [],
+}
+`;
+
+exports[`unit:internal/takeExtension > should merge extension field into \`combined\` (2) 1`] = `
+{
+  "afterEnter": [],
+  "afterExit": [],
+  "beforeEnter": [],
+  "beforeExit": [],
+  "canContainEols": [],
+  "enter": {},
+  "exit": {},
+  "transforms": [],
+}
+`;

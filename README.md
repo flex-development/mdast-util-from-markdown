@@ -1,16 +1,20 @@
 # mdast-util-from-markdown
 
-[![github release](https://img.shields.io/github/v/release/flex-development/mdast-util-from-markdown.svg?include_prereleases&sort=semver)](https://github.com/flex-development/mdast-util-from-markdown/releases/latest)
+[![github release](https://img.shields.io/github/v/release/flex-development/mdast-util-from-markdown.svg?include_prereleases\&sort=semver)](https://github.com/flex-development/mdast-util-from-markdown/releases/latest)
 [![npm](https://img.shields.io/npm/v/@flex-development/mdast-util-from-markdown.svg)](https://npmjs.com/package/@flex-development/mdast-util-from-markdown)
-[![codecov](https://codecov.io/gh/flex-development/mdast-util-from-markdown/graph/badge.svg?token=U7cQgKu7HU)](https://codecov.io/gh/flex-development/mdast-util-from-markdown)
+[![npm downloads](https://img.shields.io/npm/dm/@flex-development/mdast-util-from-markdown.svg)](https://www.npmcharts.com/compare/@flex-development/mdast-util-from-markdown?interval=30)
+[![install size](https://packagephobia.now.sh/badge?p=@flex-development/mdast-util-from-markdown)](https://packagephobia.now.sh/result?p=@flex-development/mdast-util-from-markdown)
+[![minified bundle size](https://badgen.net/bundlephobia/min/@flex-development/mdast-util-from-markdown?cache)](https://bundlephobia.com/package/@flex-development/mdast-util-from-markdown)
+[![tree shaking suppport](https://badgen.net/bundlephobia/tree-shaking/@flex-development/mdast-util-from-markdown)](https://bundlephobia.com/package/@flex-development/mdast-util-from-markdown)
+[![codecov](https://codecov.io/github/flex-development/mdast-util-from-markdown/graph/badge.svg?token=qLeyGURlL3)](https://codecov.io/github/flex-development/mdast-util-from-markdown)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![license](https://img.shields.io/github/license/flex-development/mdast-util-from-markdown.svg)](LICENSE.md)
-[![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)
-[![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript&logoColor=ffffff)](https://typescriptlang.org/)
-[![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)](https://vitest.dev/)
-[![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat&logo=yarn&logoColor=ffffff)](https://yarnpkg.com/)
+[![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits\&logoColor=ffffff)](https://conventionalcommits.org)
+[![typescript](https://img.shields.io/badge/-typescript-3178c6?logo=typescript\&logoColor=ffffff)](https://typescriptlang.org)
+[![vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat\&logo=vitest\&logoColor=ffffff)](https://vitest.dev)
+[![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat\&logo=yarn\&logoColor=ffffff)](https://yarnpkg.com)
 
-**[mdast][mdast]** utility that turns markdown into a syntax tree
+**[mdast][]** utility that turns markdown into a syntax tree
 
 ## Contents
 
@@ -19,36 +23,44 @@
 - [Install](#install)
 - [Use](#use)
 - [API](#api)
-  - [`fromMarkdown(value[, encoding][, options])`](#frommarkdownvalue-encoding-options)
-  - [`compiler([options])`](#compileroptions)
-  - [`handles`](#handles)
-  - [`CompileContext`](#compilecontext)
-  - [`CompileData`](#compiledata)
-  - [`Compiler`](#compiler)
-  - [`Config`](#config)
-  - [`Encoding`](#encoding)
-  - [`Event`](#event)
-  - [`Extension`](#extension)
-  - [`Fragment`](#fragment)
-  - [`Handle`](#handle)
-  - [`Handles`](#handles-1)
-  - [`OnEnterError`](#onentererror)
-  - [`OnExitError`](#onexiterror)
-  - [`Options`](#options)
-  - [`Point`](#point)
-  - [`StackedNode`](#stackednode)
-  - [`StartPoint`](#startpoint)
-  - [`TokenTuple`](#tokentuple)
-  - [`Token`](#token)
-  - [`TokenizeContext`](#tokenizecontext)
-  - [`Transform`](#transform)
-  - [`Value`](#value)
+  - [`fromMarkdown(value[, encoding][, options])`][api-from-markdown]
+  - [`compiler([options])`][api-compiler]
+  - [creators][api-creators]
+  - [handles][api-handles]
+- [Types](#types)
+  - [`Buffer`][types-buffer]
+  - [`CharacterReferenceType`][types-character-reference-type]
+  - [`CompileContext`][types-compile-context]
+  - [`CompileData`][types-compile-data]
+  - [`Compiler`][types-compiler]
+  - [`Config`][types-config]
+  - [`Encoding`][types-encoding]
+  - [`Enter`][types-enter]
+  - [`Event`][types-event]
+  - [`Exit`][types-exit]
+  - [`Extension`][types-extension]
+  - [`Fragment`][types-fragment]
+  - [`Handle`][types-handle]
+  - [`Handles`][types-handles]
+  - [`Node`][types-node]
+  - [`OnEnterError`][types-on-enter-error]
+  - [`OnExitError`][types-on-exit-error]
+  - [`Options`][types-options]
+  - [`ParseOptions`][types-parse-options]
+  - [`Point`][types-point]
+  - [`Resume`][types-resume]
+  - [`StackedToken`][types-stacked-token]
+  - [`StartPoint`][types-start-point]
+  - [`TokenType`][types-token-type]
+  - [`Token`][types-token]
+  - [`TokenizeContext`][types-tokenize-context]
+  - [`Transform`][types-transform]
+  - [`Value`][types-value]
 - [List of extensions](#list-of-extensions)
 - [Syntax](#syntax)
 - [Syntax tree](#syntax-tree)
 - [Security](#security)
 - [Related](#related)
-- [Types](#types)
 - [Contribute](#contribute)
 
 ## What is this?
@@ -59,15 +71,15 @@ This utility uses [`micromark`][micromark], which turns markdown into tokens, an
 
 ## When should I use this?
 
-If you want to handle syntax trees manually, use this.
-When you *just* want to turn markdown into HTML, use [`micromark`][micromark] instead.
-For an easier time processing content, use the **[remark][remark]** ecosystem instead.
+If you want to handle syntax trees manually, use this.\
+When you *just* want to turn markdown into HTML, use [`micromark`][micromark] instead.\
+For an easier time processing content, use the **[remark][]** ecosystem instead.
 
 ## Install
 
 This package is [ESM only][esm].
 
-In Node.js (version 18+) with [yarn][yarn]:
+In Node.js (version 18+) with [yarn][]:
 
 ```sh
 yarn add @flex-development/mdast-util-from-markdown
@@ -129,6 +141,12 @@ root[1] (1:1-2:1, 0-19)
 
 ## API
 
+This package exports the identifiers [`fromMarkdown`][api-from-markdown] and [`compiler`][api-compiler].\
+The default export is `fromMarkdown`.
+
+Additional exports are located at [`@flex-development/mdast-util-from-markdown/creators`][api-creators]
+and [`@flex-development/mdast-util-from-markdown/handles`][api-handles].
+
 ### `fromMarkdown(value[, encoding][, options])`
 
 Turn markdown into a syntax tree.
@@ -140,17 +158,17 @@ Turn markdown into a syntax tree.
 
 #### Parameters
 
-- `value` ([`Value`](#value) | `null` | `undefined`)
-  — markdown to parse
-- `encoding` ([`Encoding`](#encoding) | `null` | `undefined`, optional)
-  — [character encoding][encoding] for when `value` is [`Uint8Array`][uint8-array]
+- `value` ([`Value`][types-value] | `null` | `undefined`)
+  — the markdown to parse
+- `encoding` ([`Encoding`][types-encoding] | `null` | `undefined`, optional)
+  — the [character encoding][encoding] for when `value` is [`Uint8Array`][uint8-array]
   - default: `'utf8'`
-- `options` ([`Options`](#options) | `null` | `undefined`, optional)
-  — configuration
+- `options` ([`Options`][types-options] | `null` | `undefined`, optional)
+  — the configuration options
 
 #### Returns
 
-([`Root`][root]) mdast.
+([`Root`][root]) mdast
 
 ### `compiler([options])`
 
@@ -160,47 +178,89 @@ Create an mdast compiler.
 
 #### Parameters
 
-- `options` ([`Options`](#options) | `null` | `undefined`, optional)
-  — configuration
+- `options` ([`Options`][types-options] | `null` | `undefined`, optional)
+  — the configuration options
 
 #### Returns
 
-([`Compiler`](#compiler)) mdast compiler.
+([`Compiler`][types-compiler]) The mdast compiler
 
-### `handles`
+### creators
 
-([`Handles`](#handles-1)) Token types mapped to default token handlers.
+`@flex-development/mdast-util-markdown/creators` exports default [`Node`][types-node] factories by name.
 
-> 👉 Default handlers are also exported by name. See [`src/handles.ts`](src/handles.ts) for more info.
+### handles
+
+`@flex-development/mdast-util-markdown/handles` exports default token [`Handle`][types-handle]s by name.
+
+## Types
+
+This package is fully typed with [TypeScript][].
+
+### `Buffer`
+
+Start capturing output into a temporary node (`type`).
+
+```ts
+type Buffer = (this: CompileContext) => undefined
+```
+
+#### Parameters
+
+- **`this`** ([`CompileContext`][types-compile-context])
+  — the event compilation context
+
+#### Returns
+
+(`undefined`) Nothing
+
+### `CharacterReferenceType`
+
+Union of character reference types (`type`).
+
+```ts
+type CharacterReferenceType =
+  | 'characterReferenceMarkerHexadecimal'
+  | 'characterReferenceMarkerNumeric'
+```
 
 ### `CompileContext`
 
-mdast compiler context (TypeScript type).
+The event compilation context (`interface`).
+
+Event compilation consumes the [`Event`][types-event]s of a parser to produce a syntax tree.
+
+During compilation, event handlers orchestrate [`Node`][types-node] creation, `enter` nodes onto the `stack`,
+and `exit` them later.
+
+The compilation `config` defines how [`TokenType`][types-token-type]s map to compilation behavior.
+After the initial compilation, [`Transform`][types-transform]s can be applied to manipulate the final tree.
 
 #### Properties
 
-- `buffer` (`(this: CompileContext) => undefined`)
-  — capture some of the output data
-- `config` ([`Config`](#config))
-  — configuration
-- `data` ([`CompileData`](#compiledata))
+- `buffer` ([`Buffer`][types-buffer])
+  — start capturing output into a temporary node.\
+  captured values can later be serialized with `resume`
+- `config` ([`Config`][types-config])
+  — the compilation configuration
+- `data` ([`CompileData`][types-compile-data])
   — info passed around; key/value store
-- `enter` (`(this: CompileContext, node: Nodes, token: Token, onError?: OnEnterError) => undefined`)
+- `enter` ([`Enter`][types-enter])
   — enter a node
-- `exit` (`(this: CompileContext, token: Token, onError?: OnExitError) => undefined`)
+- `exit` ([`Exit`][types-exit])
   — exit a node
-- `resume` (`(this: CompileContext) => string`)
-  — stop capturing and access the output data
-- `sliceSerialize` ([`TokenizeContext['sliceSerialize']`](#tokenizecontext))
+- `resume` ([`Resume`][types-resume])
+  — stop `buffer`ing and serialize the captured node
+- `sliceSerialize` ([`TokenizeContext['sliceSerialize']`][types-tokenize-context])
   — get the string value of a token
-- `stack` ([`StackedNode[]`](#stackednode))
-  — stack of nodes
-- `tokenStack` ([`TokenTuple[]`](#tokentuple))
-  — stack of tokens
+- `stack` ([`Node[]`][types-node])
+  — the node stack
+- `tokenStack` ([`StackedToken[]`][types-stacked-token])
+  — the token stack
 
 ### `CompileData`
 
-Interface of tracked data (TypeScript interface).
+Interface of tracked data (`interface`).
 
 ```ts
 interface CompileData {/* see code */}
@@ -216,37 +276,61 @@ declare module 'mdast-util-from-markdown' {
 }
 ```
 
+To sync native augmentations, import `@flex-development/mdast-util-from-markdown/mdast`:
+
+```ts
+import type {} from '@flex-development/mdast-util-from-markdown/mdast'
+```
+
 ### `Compiler`
 
-Turn micromark events into a syntax tree (TypeScript type).
+Turn micromark events into a syntax tree (`type`).
+
+```ts
+type Compiler = (this: void, events?: Event[] | null | undefined) => Root
+```
 
 #### Parameters
 
-- `events` ([`Event[]`](#event))
-  — list of events
+- `events` ([`Event[]`][types-event] | `null` | `undefined`, optional)
+  — the list of events
 
 #### Returns
 
-([`Root`][root]) mdast.
+([`Root`][root]) mdast
 
 ### `Config`
 
-Configuration (TypeScript type).
+The event compilation configuration (`interface`).
+
+#### Extends
+
+- [`Extension`][types-extension]
 
 #### Properties
 
+- `afterEnter` ([`Handle[]`][types-handle])
+  — the list of listeners to call after a token is `enter`ed
+- `afterExit` ([`Handle[]`][types-handle])
+  — the list of listeners to call after a token is `exited`ed
+- `beforeEnter` ([`Handle[]`][types-handle])
+  — the list of listeners to call before a token is `enter`ed
+- `beforeExit` ([`Handle[]`][types-handle])
+  — the list of listeners to call before a token is `exited`ed
 - `canContainEols` (`string[]`)
-  — token types where line endings are used
-- `enter` ([`Handles`](#handles))
-  — opening handles
-- `exit` ([`Handles`](#handles))
-  — closing handles
-- `transforms` ([`Transform[]`](#transform))
-  — tree transforms
+  — the list of token types where line endings are used
+- `enter` ([`Handles`][types-handles])
+  — record, where each key is a [`TokenType`][types-token-type]
+  and each value is the handler to call when entering a token
+- `exit` ([`Handles`][types-handles])
+  — record, where each key is a [`TokenType`][types-token-type]
+  and each value is the handler to call when exiting a token
+- `transforms` ([`Transform[]`][types-transform])
+  — the list of tree transforms to apply
 
 ### `Encoding`
 
-Encodings supported by `TextEncoder` (TypeScript type).
+Encodings supported by `TextEncoder` (`type`).
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
@@ -258,9 +342,37 @@ type Encoding =
   | (string & {}) // everything else (depends on browser, or full ICU data)
 ```
 
+### `Enter`
+
+Enter a node (`type`).
+
+```ts
+type Enter = (
+  this: CompileContext,
+  node: Node,
+  token: Token,
+  onError?: OnEnterError | null | undefined
+) => undefined
+```
+
+#### Parameters
+
+- **`this`** ([`CompileContext`][types-compile-context])
+  — the event compilation context
+- `node` ([`Node`][types-node])
+  — the node to enter
+- `token` ([`Token`][types-token])
+  — the token associated with `node`
+- `onError` ([`OnEnterError`][types-on-enter-error] | `null` | `undefined`, optional)
+  — handle the case where another token is open, but closed by something else
+
+#### Returns
+
+(`undefined`) Nothing
+
 ### `Event`
 
-The start or end of a [token](#token) amongst other events (TypeScript type).
+The start or end of a [token][types-token] amongst other events (`type`).
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
@@ -268,139 +380,234 @@ See [`micromark-util-types`][micromark-util-types] for more info.
 type Event = ['enter' | 'exit', Token, TokenizeContext]
 ```
 
-### `Extension`
+### `Exit`
 
-Change how [tokens](#token) are turned into nodes (TypeScript type).
-
-See [`Config`](#config) for more info.
+Exit a node (`type`).
 
 ```ts
-type Extension = Partial<Config>
+type Exit = (
+  this: CompileContext,
+  token: Token,
+  onError?: OnExitError | null | undefined
+) => undefined
 ```
+
+#### Parameters
+
+- **`this`** ([`CompileContext`][types-compile-context])
+  — the event compilation context
+- `token` ([`Token`][types-token])
+  — the token associated with the node
+- `onError` ([`OnExitError`][types-on-exit-error] | `null` | `undefined`, optional)
+  — handle the case where another token is open
+
+#### Returns
+
+(`undefined`) Nothing
+
+### `Extension`
+
+A compiler extension (`interface`).
+
+Compiler extensions can be used to change how tokens are turned into nodes,
+as well as apply transformations to the final syntax tree.
+
+#### Properties
+
+- `afterEnter` ([`Handle`][types-handle] | [`Handle[]`][types-handle] | `null` | `undefined`, optional)
+  — the listener, or listeners, to call after a token is `enter`ed
+- `afterExit` ([`Handle`][types-handle] | [`Handle[]`][types-handle] | `null` | `undefined`, optional)
+  — the listener, or listeners, to call after a token is `exited`ed
+- `beforeEnter` ([`Handle`][types-handle] | [`Handle[]`][types-handle] | `null` | `undefined`, optional)
+  — the listener, or listeners, to call before a token is `enter`ed
+- `beforeExit` ([`Handle`][types-handle] | [`Handle[]`][types-handle] | `null` | `undefined`, optional)
+  — the listener, or listeners, to call before a token is `exited`ed
+- `canContainEols` (`string[]` | `null` | `undefined`, optional)
+  — the list of token types where line endings are used
+- `enter` ([`Handles`][types-handles] | `null` | `undefined`, optional)
+  — record, where each key is a [`TokenType`][types-token-type]
+  and each value is the handler to call when entering a token
+- `exit` ([`Handles`][types-handles] | `null` | `undefined`, optional)
+  — record, where each key is a [`TokenType`][types-token-type]
+  and each value is the handler to call when exiting a token
+- `transforms` ([`Transform[]`][types-transform] | `null` | `undefined`, optional)
+  — the list of tree transforms to apply
 
 ### `Fragment`
 
-Temporary node (TypeScript type).
-
-```ts
-type Fragment = Omit<mdast.Parent, 'children' | 'type'> & {
-  children: mdast.PhrasingContent[]
-  type: 'fragment'
-}
-```
+A temporary node (`interface`).
 
 #### Properties
 
 - `children` ([`mdast.PhrasingContent[]`][phrasing-content])
-  — list of children
+  — the list of children
 - `type` (`'fragment'`)
-  — node type
+  — the node type
 
 ### `Handle`
 
-Handle a [token](#token) (TypeScript type).
+Handle a [token][types-token] (`type`).
+
+```ts
+type Handle = (this: CompileContext, token: Token) => undefined | void
+```
 
 #### Parameters
 
-- `this` ([`CompileContext`](#compilecontext))
-  — compiler context
-- `token` ([`Token`](#token))
-  — token to handle
+- **`this`** ([`CompileContext`][types-compile-context])
+  — the event compilation context
+- `token` ([`Token`][types-token])
+  — the token to handle
 
 #### Returns
 
-(`undefined | void`) Nothing.
+(`undefined` | `void`) Nothing
 
 ### `Handles`
 
-Token types mapped to handles (TypeScript type).
+Record, where each key is a [`TokenType`][types-token-type] and each value is an event handler (`type`).
 
 ```ts
-type Handles = Record<string, Handle>
+type Handles = Partial<Record<TokenType, Handle>>
+```
+
+### `Node`
+
+Union of nodes that can be created during event compilation (`type`).
+
+> 👉 **Note**: Also exported as `StackedNode`.
+
+```ts
+type Node = Fragment | Root | RootContent
 ```
 
 ### `OnEnterError`
 
-Handle the case where the `right` token is open, but is closed by the `left` token, or because end of file was reached
-(TypeScript type).
+Handle the case where the `right` token is open,
+but is closed by the `left` token, or because end of content was reached (`type`).
+
+```ts
+type OnEnterError = (
+  this: Omit<CompileContext, 'sliceSerialize'>,
+  left: Token | undefined,
+  right: Token
+) => undefined
+```
 
 #### Parameters
 
-- `this` ([`Omit<CompileContext, 'sliceSerialize'>`](#compilecontext))
-  — compiler context
-- `left` ([`Token`](#token) | `undefined`)
-  — left token
-- `right` ([`Token`](#token))
-  — open token
+- **`this`** ([`Omit<CompileContext, 'sliceSerialize'>`][types-compile-context])
+  — the event compilation context
+- `left` ([`Token`][types-token] | `undefined`)
+  — the exiting token
+- `right` ([`Token`][types-token])
+  — the open token
 
 #### Returns
 
-(`undefined`) Nothing.
+(`undefined`) Nothing
 
 ### `OnExitError`
 
-Handle the case where the `right` token is open, but is closed by exiting the `left` token (TypeScript type).
+Handle the case where the `right` token is open, but is closed by exiting the `left` token (`type`).
+
+```ts
+type OnExitError = (
+  this: Omit<CompileContext, 'sliceSerialize'>,
+  left: Token,
+  right: Token
+) => undefined
+```
 
 #### Parameters
 
-- `this` ([`Omit<CompileContext, 'sliceSerialize'>`](#compilecontext))
-  — compiler context
-- `left` ([`Token`](#token))
-  — left token
-- `right` ([`Token`](#token))
-  — open token
+- **`this`** ([`Omit<CompileContext, 'sliceSerialize'>`][types-compile-context])
+  — the event compilation context
+- `left` ([`Token`][types-token])
+  — the exiting token
+- `right` ([`Token`][types-token])
+  — the open token
 
 #### Returns
 
-(`undefined`) Nothing.
+(`undefined`) Nothing
 
 ### `Options`
 
 Configuration options (TypeScript type).
 
+#### Extends
+
+- [`ParseOptions`][types-parse-options]
+
 #### Properties
 
-- `extensions?` ([`micromark.Extension[]`][micromark-extension] | `null` | `undefined`)
-  — extensions for this utility to change how tokens are turned into nodes
-- `from?` ([`StartPoint`](#startpoint) | `null` | `undefined`)
-  — point before first character in markdown value. node positions will be relative to this point
-- `mdastExtensions?` ([`(Extension | Extension[])[]`](#extension) | `null` | `undefined`)
+- `extensions` ([`micromark.Extension[]`][micromark-extension] | `null` | `undefined`, optional)
+  — extensions for [`micromark`][micromark] to change how tokens are produced
+- `from` ([`StartPoint`][types-start-point] | `null` | `undefined`, optional)
+  — the point before the first character in the content.\
+  node positions will be relative to this point
+  - **default**: `{ column: 1, line: 1, offset: 0 }`
+- `mdastExtensions` ([`(Extension | Extension[])[]`][types-extension] | `null` | `undefined`, optional)
   — extensions for this utility to change how tokens are turned into nodes
 
-### `Point`
+### `ParseOptions`
 
-A location in the source document and chunk (TypeScript type).
+Options for parsing markdown (`interface`).
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
-### `StackedNode`
+### `Point`
 
-A node on the compiler context stack (TypeScript type).
+A location in the source document and chunk (`interface`).
+
+See [`micromark-util-types`][micromark-util-types] for more info.
+
+### `Resume`
+
+Stop capturing output and serialize the captured node (`type`).
 
 ```ts
-type StackedNode = Fragment | mdast.Nodes
+type Resume = (this: CompileContext) => string
+```
+
+#### Parameters
+
+- **`this`** ([`CompileContext`][types-compile-context])
+  — the event compilation context
+
+#### Returns
+
+(`string`) The serialized node
+
+### `Root`
+
+A document fragment or a whole document (`interface`).
+
+See [`mdast`][mdast] for more info.
+
+### `StackedToken`
+
+List containing an open token on the stack,
+and an optional error handler to use if the token isn't closed properly (`type`).
+
+> 👉 **Note**: Also exported as `TokenTuple`.
+
+```ts
+type StackedToken = [token: Token, handler: OnEnterError | undefined]
 ```
 
 ### `StartPoint`
 
-Point before first character in a markdown value (TypeScript type).
+The point before the first character in the content (`type`).
 
 ```ts
 type StartPoint = Omit<Point, '_bufferIndex' | '_index'>
 ```
 
-### `TokenTuple`
-
-List containing an open token on the stack, and an optional error handler to use if the token isn't closed properly
-(TypeScript type).
-
-```ts
-type TokenTuple = [token: Token, handler: OnEnterError | undefined]
-```
-
 ### `Token`
 
-A span of chunks (TypeScript interface).
+A span of chunks (`interface`).
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
@@ -410,22 +617,34 @@ A context object that helps with tokenizing markdown constructs (TypeScript inte
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
+### `TokenType`
+
+Union of registered token types (`type`).
+
+See [`micromark-util-types`][micromark-util-types] for more info.
+
 ### `Transform`
 
-Extra transform, to change the AST afterwards (TypeScript type).
+Transform the syntax `tree` (`type`).
+
+> 👉 **Note**: Returning `null`, `undefined`, or `void` will preserve `tree`.
+
+```ts
+type Transform = (this: void, tree: Root) => Root | null | undefined | void
+```
 
 #### Parameters
 
-- `tree` ([`Root`][root])
-  — tree to transform
+- `Root` ([`Root`][types-root])
+  — the tree to transform
 
 #### Returns
 
-([`Root`][root] | `null` | `undefined` | `void`) New tree or nothing (in which case the current tree is used).
+([`Root`][types-root] | `null` | `undefined` | `void`) The serialized node
 
 ### `Value`
 
-Contents of a file.
+The contents of a file.
 
 See [`micromark-util-types`][micromark-util-types] for more info.
 
@@ -469,55 +688,146 @@ extending markdown, [more information is available in micromark’s readme][micr
 
 ## Syntax tree
 
-The syntax tree is [mdast][mdast].
-
-## Types
-
-This package is fully typed with [TypeScript][typescript].
+The syntax tree is [mdast][].
 
 ## Security
 
 As markdown is sometimes used for HTML, and improper use of HTML can open you up to a [cross-site scripting (XSS)][xss]
 attack, use of `mdast-util-from-markdown` can also be unsafe.
 
-When going to HTML, use this utility in combination with [`hast-util-sanitize`][hast-util-sanitize] to make the tree safe.
+When going to HTML, use this utility in combination with [`hast-util-sanitize`][hast-util-sanitize]
+to make the tree safe.
 
 ## Related
 
-- [`mdast-util-to-markdown`][mdast-util-to-markdown] &mdash; serialize mdast as markdown
-- [`micromark`][micromark] &mdash; parse markdown
-- [`remark`][remark] &mdash; process markdown
+- [`mdast-util-to-markdown`][mdast-util-to-markdown] — serialize mdast as markdown
+- [`micromark`][micromark] — parse markdown
+- [`remark`][remark] — process markdown
 
 ## Contribute
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
+[api-compiler]: #compileroptions
+
+[api-creators]: #creators
+
+[api-from-markdown]: #frommarkdownvalue-encoding-options
+
+[api-handles]: #handles
+
 [encoding]: https://nodejs.org/api/util.html#whatwg-supported-encodings
+
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh/
+
 [hast-util-sanitize]: https://github.com/syntax-tree/hast-util-sanitize
+
 [mdast-util-directive]: https://github.com/syntax-tree/mdast-util-directive
+
 [mdast-util-frontmatter]: https://github.com/syntax-tree/mdast-util-frontmatter
+
 [mdast-util-gfm-autolink-literal]: https://github.com/syntax-tree/mdast-util-gfm-autolink-literal
+
 [mdast-util-gfm-footnote]: https://github.com/syntax-tree/mdast-util-gfm-footnote
+
 [mdast-util-gfm-strikethrough]: https://github.com/syntax-tree/mdast-util-gfm-strikethrough
+
 [mdast-util-gfm-table]: https://github.com/syntax-tree/mdast-util-gfm-table
+
 [mdast-util-gfm-task-list-item]: https://github.com/syntax-tree/mdast-util-gfm-task-list-item
+
 [mdast-util-gfm]: https://github.com/syntax-tree/mdast-util-gfm
+
 [mdast-util-math]: https://github.com/syntax-tree/mdast-util-math
+
 [mdast-util-mdx-expression]: https://github.com/syntax-tree/mdast-util-mdx-expression
+
 [mdast-util-mdx-jsx]: https://github.com/syntax-tree/mdast-util-mdx-jsx
+
 [mdast-util-mdx]: https://github.com/syntax-tree/mdast-util-mdx
+
 [mdast-util-mdxjs-esm]: https://github.com/syntax-tree/mdast-util-mdxjs-esm
+
 [mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
+
 [mdast]: https://github.com/syntax-tree/mdast
+
 [micromark-extension]: https://github.com/micromark/micromark#extensions
+
 [micromark-util-types]: https://github.com/micromark/micromark/tree/main/packages/micromark-util-types
+
 [micromark]: https://github.com/micromark/micromark
+
 [phrasing-content]: https://github.com/syntax-tree/mdast#phrasingcontent
+
 [remark]: https://github.com/remarkjs/remark
+
 [root]: https://github.com/syntax-tree/mdast#root
+
+[types-buffer]: #buffer
+
+[types-character-reference-type]: #characterreferencetype
+
+[types-compile-context]: #compilecontext
+
+[types-compile-data]: #compiledata
+
+[types-compiler]: #compiler
+
+[types-config]: #config
+
+[types-encoding]: #encoding
+
+[types-enter]: #enter
+
+[types-event]: #event
+
+[types-exit]: #exit
+
+[types-extension]: #extension
+
+[types-fragment]: #fragment
+
+[types-handle]: #handle
+
+[types-handles]: #handles-1
+
+[types-node]: #node
+
+[types-on-enter-error]: #onentererror
+
+[types-on-exit-error]: #onexiterror
+
+[types-options]: #options
+
+[types-parse-options]: #parseoptions
+
+[types-point]: #point
+
+[types-resume]: #resume
+
+[types-root]: #root
+
+[types-stacked-token]: #stackedtoken
+
+[types-start-point]: #startpoint
+
+[types-token]: #token
+
+[types-token-type]: #tokentype
+
+[types-tokenize-context]: #tokenizecontext
+
+[types-transform]: #transform
+
+[types-value]: #value
+
 [typescript]: https://www.typescriptlang.org
+
 [uint8-array]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
 [yarn]: https://yarnpkg.com

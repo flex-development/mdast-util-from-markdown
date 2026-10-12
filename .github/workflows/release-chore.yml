@@ -17,11 +17,12 @@
 # - https://github.com/actions/setup-node
 # - https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#yarn2-configuration
 # - https://github.com/flex-development/gh-commit
+# - https://github.com/flex-development/gh-release-url-action
 # - https://github.com/flex-development/grease
 # - https://github.com/hmarr/debug-action
 # - https://github.com/kaisugi/action-regex-match
 # - https://regex101.com/r/OwpOr2
-# - https://regex101.com/r/VIIVGd
+# - https://yarnpkg.com/cli/version/apply
 
 ---
 name: release-chore
@@ -39,8 +40,7 @@ jobs:
     outputs:
       branch: ${{ steps.branch.outputs.result }}
       message: ${{ steps.message.outputs.result }}
-      tag: ${{ steps.tag.outputs.result }}
-      version: ${{ steps.version.outputs.match }}
+      version: ${{ steps.metadata.outputs.group2 }}
     steps:
       - id: debug
         name: Print environment variables and event payload
@@ -53,7 +53,7 @@ jobs:
           exit 1
       - id: checkout
         name: Checkout ${{ github.ref_name }}
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
           ref: ${{ github.ref }}
@@ -70,46 +70,48 @@ jobs:
           ```'
           echo "$ERR" >>$GITHUB_STEP_SUMMARY
           exit 1
-      - id: version
-        name: Get release version
-        uses: kaisugi/action-regex-match@v1.0.1
+      - id: metadata
+        name: Extract release metadata
+        uses: kaisugi/action-regex-match@v1.0.2
         with:
+          flags: u
           regex: ${{ vars.RELEASE_CHORE_REGEX }}
           text: ${{ github.event.head_commit.message }}
-      - id: fail-version
-        if: steps.version.outputs.match == ''
-        name: Fail on invalid release version
+      - id: fail-metadata
+        if: steps.metadata.outputs.match == ''
+        name: Fail on invalid head commit message
         run: |
-          ERR='**Invalid release chore commit**
+          ERR='**Invalid release chore commit message**
           ```sh
           ${{ github.event.head_commit.message }}
           ```
           Message must match [`${{ vars.RELEASE_CHORE_REGEX }}`](https://regex101.com/r/OwpOr2)'
           echo "$ERR" >>$GITHUB_STEP_SUMMARY
           exit 1
-      - id: tag
+      - id: environment
         name: Get release tag
-        run: |
-          echo "result=$(jq .tagprefix grease.config.json -r)${{ steps.version.outputs.match }}" >>$GITHUB_OUTPUT
+        uses: flex-development/gh-release-url-action@2.1.0
+        with:
+          version: ${{ steps.metadata.outputs.group2 }}
       - id: message
         name: Get release message
-        run: 'echo "result=release: ${{ steps.tag.outputs.result }}" >>$GITHUB_OUTPUT'
+        run: 'echo "result=release: ${{ steps.environment.outputs.tag }}" >>$GITHUB_OUTPUT'
       - id: branch
         name: Get release branch name
-        run: echo "result=release/${{ steps.version.outputs.match }}" >>$GITHUB_OUTPUT
+        run: echo "result=release/${{ steps.metadata.outputs.group2 }}" >>$GITHUB_OUTPUT
   branch:
     needs: preflight
     runs-on: ubuntu-latest
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v1.11.0
+        uses: actions/create-github-app-token@v3.2.0
         with:
-          app-id: ${{ secrets.BOT_APP_ID }}
+          client-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
       - id: checkout
         name: Checkout ${{ github.ref_name }}
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           ref: ${{ github.ref }}
           token: ${{ steps.bot-token.outputs.token }}
@@ -122,21 +124,17 @@ jobs:
     needs:
       - branch
       - preflight
-    permissions:
-      packages: read
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v1.11.0
+        uses: actions/create-github-app-token@v3.2.0
         with:
-          app-id: ${{ secrets.BOT_APP_ID }}
+          client-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
       - id: checkout
         name: Checkout ${{ needs.preflight.outputs.branch }}
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -144,7 +142,7 @@ jobs:
           token: ${{ steps.bot-token.outputs.token }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v7.0.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
@@ -153,22 +151,32 @@ jobs:
         name: Install dependencies
         env:
           HUSKY: 0
-        run: yarn && echo "$GITHUB_WORKSPACE/node_modules/.bin" >>$GITHUB_PATH
-      - id: bump-manifest
+        run: yarn --immutable
+      - id: local-binaries
+        name: Add local binaries to $PATH
+        run: echo "${{ github.workspace }}/node_modules/.bin" >> ${{ github.path }}
+      - id: versions
+        name: Upload version manifest
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ needs.preflight.outputs.version }}.yml
+          path: .yarn/versions/*.yml
+      - id: bump
         name: Bump manifest version to ${{ needs.preflight.outputs.version }}
-        run: grease bump -w ${{ needs.preflight.outputs.version }}
+        run: yarn version apply --all --force
+      - id: changeset-base-refs
+        name: Update `changesetBaseRefs` in .yarnrc.yml
+        run: |
+          set -e
+          yq '.changesetBaseRefs="${{ needs.preflight.outputs.version }}"' -i .yarnrc.yml
       - id: changelog
-        name: Add CHANGELOG entry for ${{ needs.preflight.outputs.tag }}
+        name: Add CHANGELOG entry for ${{ needs.preflight.outputs.version }}
         env:
           TZ: ${{ vars.TZ }}
         run: |
-          echo "$(grease changelog)" >>$GITHUB_STEP_SUMMARY
-          grease changelog -sw
-      - id: build
-        name: Build project
-        env:
-          NODE_NO_WARNINGS: 1
-        run: yarn build
+          set -e
+          echo "$(grease changelog)" >>$GITHUB_STEP_SUMMARY # add changelog entry to summary.
+          grease changelog -sw # write changelog entry.
       - id: commit
         name: Commit and push release preparation
         uses: flex-development/gh-commit@1.0.0
@@ -190,13 +198,13 @@ jobs:
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v1.11.0
+        uses: actions/create-github-app-token@v3.2.0
         with:
-          app-id: ${{ secrets.BOT_APP_ID }}
+          client-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
       - id: checkout
         name: Checkout ${{ needs.preflight.outputs.branch }}
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
           ref: ${{ needs.preflight.outputs.branch }}
@@ -211,7 +219,8 @@ jobs:
           <!-- A clear and concise description of your changes. -->
 
           - bumped manifest version to `${{ needs.preflight.outputs.version }}`
-          - added `CHANGELOG` entry for `${{ needs.preflight.outputs.tag }}`
+          - bumped `changesetBaseRefs` to `${{ needs.preflight.outputs.version }}`
+          - added `CHANGELOG` entry for `${{ needs.preflight.outputs.version }}`
 
           ## Linked issues
 
@@ -244,6 +253,6 @@ jobs:
           - [x] tests added and/or updated
           - [x] documentation added or updated
           - [x] new, **tolerable** vulnerabilities and/or warnings documented, if any
-          - [x] [pr naming conventions][1]
+          - [x] [pr naming conventions][pr-naming]
 
-          [1]: https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md#pull-request-titles'
+          [pr-naming]: ${{ github.server_url }}/${{ github.repository }}/blob/main/CONTRIBUTING.md#pull-request-titles'
