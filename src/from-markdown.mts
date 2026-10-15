@@ -3,13 +3,10 @@
  * @module mdast-util-from-markdown/fromMarkdown
  */
 
-import type {
-  Encoding,
-  Options,
-  Value
-} from '@flex-development/mdast-util-from-markdown'
+import type { Options } from '@flex-development/mdast-util-from-markdown'
 import type { Root } from 'mdast'
 import { parse, postprocess, preprocess } from 'micromark'
+import type { Encoding, Value } from 'micromark-util-types'
 import compiler from './compiler.mts'
 
 export default fromMarkdown

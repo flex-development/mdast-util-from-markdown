@@ -18,7 +18,6 @@ declare module 'micromark-util-types' {
   }
 }
 
-export type { Encoding, Token, Value } from 'micromark-util-types'
 export { default as compiler } from './compiler.mts'
 export { default, default as fromMarkdown } from './from-markdown.mts'
 export type * from './interfaces/index.mts'
