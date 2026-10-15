@@ -1,3 +1,21 @@
+## [2.0.0](https://github.com/flex-development/mdast-util-from-markdown/compare/1.2.0...2.0.0) (2026-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- **ts:** drop re-exported types
+- **handles:** use `Context` from `mark/ast` and `Token` from `mark/parse`
+- **creators:** use `Token` from `mark/parse`
+
+### :package: Build
+
+- [[`0e0d027`](https://github.com/flex-development/mdast-util-from-markdown/commit/0e0d0273b4ac21746a209bd3630b2307e73745f3)] **deps:** bump the mark group with 2 updates
+
+### :mechanical_arm: Refactors
+
+- [[`d803092`](https://github.com/flex-development/mdast-util-from-markdown/commit/d8030920d03a73a6cfa069f53408acec247f666e)] **creators:** use `Token` from `mark/parse`
+- [[`4e284d8`](https://github.com/flex-development/mdast-util-from-markdown/commit/4e284d8ff57301fb0f72213f71de3706a0534879)] **handles:** use `Context` from `mark/ast` and `Token` from `mark/parse`
+- [[`5d3c1a2`](https://github.com/flex-development/mdast-util-from-markdown/commit/5d3c1a2fa3b71e2ed49b39995bc697c73a43bfd7)] **ts:** drop re-exported types
+
 ## [1.2.0](https://github.com/flex-development/mdast-util-from-markdown/compare/1.1.0...1.2.0) (2026-10-12)
 
 ### :robot: Continuous Integration
@@ -183,6 +201,7 @@
 ### :house_with_garden: Housekeeping
 
 - [[`d7c462c`](https://github.com/flex-development/mdast-util-from-markdown/commit/d7c462c623da49e224d2802f9ae57dd0564899e9)] initial commit
+
 
 
 
