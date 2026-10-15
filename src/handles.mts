@@ -3,12 +3,9 @@
  * @module mdast-util-from-markdown/handles
  */
 
-import type { Node } from '@flex-development/mark/ast'
-import type {
-  CompileContext,
-  Handle,
-  Token
-} from '@flex-development/mdast-util-from-markdown'
+import type { Context, Node } from '@flex-development/mark/ast'
+import type { Token } from '@flex-development/mark/parse'
+import type { Handle } from '@flex-development/mdast-util-from-markdown'
 import { text } from '@flex-development/mdast-util-from-markdown/creators'
 import { decodeNamedCharacterReference } from 'decode-named-character-reference'
 import { ok } from 'devlop'
@@ -61,19 +58,19 @@ export {
 /**
  * Enter data.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function enterdata(this: CompileContext, token: Token): undefined {
+function enterdata(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
@@ -111,19 +108,19 @@ function enterdata(this: CompileContext, token: Token): undefined {
 /**
  * Enter a list item value.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function enterlistitemvalue(this: CompileContext, token: Token): undefined {
+function enterlistitemvalue(this: Context, token: Token): undefined {
   if (this.data.expectingFirstListItemValue) {
     /**
      * The ancestor node.
@@ -152,49 +149,49 @@ function enterlistitemvalue(this: CompileContext, token: Token): undefined {
 /**
  * Enter an ordered list.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function enterlistordered(this: CompileContext): undefined {
+function enterlistordered(this: Context): undefined {
   return void (this.data.expectingFirstListItemValue = true)
 }
 
 /**
  * Enter a reference.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function enterreference(this: CompileContext): undefined {
+function enterreference(this: Context): undefined {
   return void (this.data.referenceType = 'collapsed')
 }
 
 /**
  * Exit a `mailto:` link.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitautolinkemail(this: CompileContext, token: Token): undefined {
+function exitautolinkemail(this: Context, token: Token): undefined {
   exitdata.call(this, token)
 
   /**
@@ -214,19 +211,19 @@ function exitautolinkemail(this: CompileContext, token: Token): undefined {
 /**
  * Exit an autolink.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitautolinkprotocol(this: CompileContext, token: Token): undefined {
+function exitautolinkprotocol(this: Context, token: Token): undefined {
   exitdata.call(this, token)
 
   /**
@@ -246,19 +243,19 @@ function exitautolinkprotocol(this: CompileContext, token: Token): undefined {
 /**
  * Exit an atx `heading`.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitatxheadingsequence(this: CompileContext, token: Token): undefined {
+function exitatxheadingsequence(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
@@ -287,19 +284,19 @@ function exitatxheadingsequence(this: CompileContext, token: Token): undefined {
 /**
  * Exit a character reference.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitcharacterreference(this: CompileContext, token: Token): undefined {
+function exitcharacterreference(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
@@ -317,20 +314,20 @@ function exitcharacterreference(this: CompileContext, token: Token): undefined {
 /**
  * Exit a character reference marker.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitcharacterreferencemarker(
-  this: CompileContext,
+  this: Context,
   token: Token
 ): undefined {
   ok(
@@ -345,20 +342,20 @@ function exitcharacterreferencemarker(
 /**
  * Exit a character reference value.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitcharacterreferencevalue(
-  this: CompileContext,
+  this: Context,
   token: Token
 ): undefined {
   const { characterReferenceType } = this.data
@@ -414,15 +411,15 @@ function exitcharacterreferencevalue(
 /**
  * Exit fenced `code`.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodefenced(this: CompileContext): undefined {
+function exitcodefenced(this: Context): undefined {
   /**
    * The node value.
    *
@@ -449,15 +446,15 @@ function exitcodefenced(this: CompileContext): undefined {
 /**
  * Exit a fenced code fence.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfence(this: CompileContext): undefined {
+function exitcodefencedfence(this: Context): undefined {
   if (!this.data.flowCodeInside) {
     this.buffer()
     this.data.flowCodeInside = true
@@ -469,15 +466,15 @@ function exitcodefencedfence(this: CompileContext): undefined {
 /**
  * Exit fenced code info.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfenceinfo(this: CompileContext): undefined {
+function exitcodefencedfenceinfo(this: Context): undefined {
   /**
    * The language info to attach.
    *
@@ -502,15 +499,15 @@ function exitcodefencedfenceinfo(this: CompileContext): undefined {
 /**
  * Exit fenced code metadata.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfencemeta(this: CompileContext): undefined {
+function exitcodefencedfencemeta(this: Context): undefined {
   /**
    * The metadata to attach.
    *
@@ -535,15 +532,15 @@ function exitcodefencedfencemeta(this: CompileContext): undefined {
 /**
  * Exit indented code.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodeindented(this: CompileContext): undefined {
+function exitcodeindented(this: Context): undefined {
   /**
    * The node value.
    *
@@ -568,15 +565,15 @@ function exitcodeindented(this: CompileContext): undefined {
 /**
  * Exit code text.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitcodetext(this: CompileContext): undefined {
+function exitcodetext(this: Context): undefined {
   /**
    * The node value.
    *
@@ -601,19 +598,19 @@ function exitcodetext(this: CompileContext): undefined {
 /**
  * Exit data.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitdata(this: CompileContext, token: Token): undefined {
+function exitdata(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
@@ -634,16 +631,16 @@ function exitdata(this: CompileContext, token: Token): undefined {
 /**
  * Exit a definition destination string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitdefinitiondestinationstring(this: CompileContext): undefined {
+function exitdefinitiondestinationstring(this: Context): undefined {
   /**
    * The definition url.
    *
@@ -668,20 +665,20 @@ function exitdefinitiondestinationstring(this: CompileContext): undefined {
 /**
  * Exit a definition label string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitdefinitionlabelstring(
-  this: CompileContext,
+  this: Context,
   token: Token
 ): undefined {
   /**
@@ -711,16 +708,16 @@ function exitdefinitionlabelstring(
 /**
  * Exit a definition title string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitdefinitiontitlestring(this: CompileContext): undefined {
+function exitdefinitiontitlestring(this: Context): undefined {
   /**
    * The definition title.
    *
@@ -745,32 +742,32 @@ function exitdefinitiontitlestring(this: CompileContext): undefined {
 /**
  * Exit a hard break.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exithardbreak(this: CompileContext): undefined {
+function exithardbreak(this: Context): undefined {
   return void (this.data.atHardBreak = true)
 }
 
 /**
  * Exit raw HTML.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exithtml(this: CompileContext): undefined {
+function exithtml(this: Context): undefined {
   /**
    * The node value.
    *
@@ -795,16 +792,16 @@ function exithtml(this: CompileContext): undefined {
 /**
  * Exit an image.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitimage(this: CompileContext): undefined {
+function exitimage(this: Context): undefined {
   /**
    * The last node on the stack.
    *
@@ -845,16 +842,16 @@ function exitimage(this: CompileContext): undefined {
 /**
  * Exit a label.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitlabel(this: CompileContext): undefined {
+function exitlabel(this: Context): undefined {
   /**
    * The last node on the stack.
    *
@@ -900,19 +897,19 @@ function exitlabel(this: CompileContext): undefined {
 /**
  * Exit label text.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitlabeltext(this: CompileContext, token: Token): undefined {
+function exitlabeltext(this: Context, token: Token): undefined {
   /**
    * The label text.
    *
@@ -945,19 +942,19 @@ function exitlabeltext(this: CompileContext, token: Token): undefined {
 /**
  * Exit a line ending.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitlineending(this: CompileContext, token: Token): undefined {
+function exitlineending(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
@@ -1002,15 +999,15 @@ function exitlineending(this: CompileContext, token: Token): undefined {
 /**
  * Exit a link.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitlink(this: CompileContext): undefined {
+function exitlink(this: Context): undefined {
   /**
    * The last node on the stack.
    *
@@ -1051,19 +1048,19 @@ function exitlink(this: CompileContext): undefined {
 /**
  * Exit a reference string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitreferencestring(this: CompileContext, token: Token): undefined {
+function exitreferencestring(this: Context, token: Token): undefined {
   /**
    * The reference string.
    *
@@ -1098,32 +1095,32 @@ function exitreferencestring(this: CompileContext, token: Token): undefined {
 /**
  * Exit a resource.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitresource(this: CompileContext): undefined {
+function exitresource(this: Context): undefined {
   return void (this.data.inReference = undefined)
 }
 
 /**
  * Exit a resource destination string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitresourcedestinationstring(this: CompileContext): undefined {
+function exitresourcedestinationstring(this: Context): undefined {
   /**
    * The resource destination.
    *
@@ -1151,16 +1148,16 @@ function exitresourcedestinationstring(this: CompileContext): undefined {
 /**
  * Exit a resource title string.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitresourcetitlestring(this: CompileContext): undefined {
+function exitresourcetitlestring(this: Context): undefined {
   /**
    * The resource destination title.
    *
@@ -1188,36 +1185,36 @@ function exitresourcetitlestring(this: CompileContext): undefined {
 /**
  * Exit a setext heading.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitsetextheading(this: CompileContext): undefined {
+function exitsetextheading(this: Context): undefined {
   return void (this.data.setextHeadingSlurpLineEnding = undefined)
 }
 
 /**
  * Exit a setext heading line sequence.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  * @see {@linkcode Token}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @param {Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitsetextheadinglinesequence(
-  this: CompileContext,
+  this: Context,
   token: Token
 ): undefined {
   /**
@@ -1240,15 +1237,15 @@ function exitsetextheadinglinesequence(
 /**
  * Exit setext heading text.
  *
- * @see {@linkcode CompileContext}
+ * @see {@linkcode Context}
  * @see {@linkcode Handle}
  *
  * @type {Handle}
  *
- * @this {CompileContext}
+ * @this {Context}
  *
  * @return {undefined}
  */
-function exitsetextheadingtext(this: CompileContext): undefined {
+function exitsetextheadingtext(this: Context): undefined {
   return void (this.data.setextHeadingSlurpLineEnding = true)
 }

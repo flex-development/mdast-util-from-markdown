@@ -12,6 +12,6 @@ import type { TokenType } from 'micromark-util-types'
  * @see {@linkcode Handle}
  * @see {@linkcode TokenType}
  */
-type Handles = Partial<Record<TokenType, Handle>>
+type Handles = { [K in TokenType]?: Handle }
 
 export type { Handles as default }
