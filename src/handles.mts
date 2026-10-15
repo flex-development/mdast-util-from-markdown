@@ -3,8 +3,8 @@
  * @module mdast-util-from-markdown/handles
  */
 
-import type { Context, Node } from '@flex-development/mark/ast'
-import type { Token } from '@flex-development/mark/parse'
+import type * as ast from '@flex-development/mark/ast'
+import type * as parse from '@flex-development/mark/parse'
 import type { Handle } from '@flex-development/mdast-util-from-markdown'
 import { text } from '@flex-development/mdast-util-from-markdown/creators'
 import { decodeNamedCharacterReference } from 'decode-named-character-reference'
@@ -58,25 +58,25 @@ export {
 /**
  * Enter data.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function enterdata(this: Context, token: Token): undefined {
+function enterdata(this: ast.Context, token: parse.Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok('children' in node, 'expected parent on stack')
@@ -84,16 +84,16 @@ function enterdata(this: Context, token: Token): undefined {
   /**
    * The list of sibling nodes.
    *
-   * @const {Node[]} siblings
+   * @const {ast.Node[]} siblings
    */
-  const siblings: Node[] = node.children
+  const siblings: ast.Node[] = node.children
 
   /**
    * The last sibling node.
    *
-   * @var {Node | undefined} tail
+   * @var {ast.Node | undefined} tail
    */
-  let tail: Node | undefined = siblings.at(-1)
+  let tail: ast.Node | undefined = siblings.at(-1)
 
   // add a new `text` node.
   if (!tail || tail.type !== 'text') {
@@ -108,26 +108,26 @@ function enterdata(this: Context, token: Token): undefined {
 /**
  * Enter a list item value.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function enterlistitemvalue(this: Context, token: Token): undefined {
+function enterlistitemvalue(this: ast.Context, token: parse.Token): undefined {
   if (this.data.expectingFirstListItemValue) {
     /**
      * The ancestor node.
      *
-     * @const {Node | undefined} ancestor
+     * @const {ast.Node | undefined} ancestor
      */
-    const ancestor: Node | undefined = this.stack.at(-2)
+    const ancestor: ast.Node | undefined = this.stack.at(-2)
 
     ok(ancestor, 'expected ancestor node on stack')
     ok(ancestor.type === 'list', 'expected list on stack')
@@ -149,57 +149,59 @@ function enterlistitemvalue(this: Context, token: Token): undefined {
 /**
  * Enter an ordered list.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function enterlistordered(this: Context): undefined {
+function enterlistordered(this: ast.Context): undefined {
   return void (this.data.expectingFirstListItemValue = true)
 }
 
 /**
  * Enter a reference.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function enterreference(this: Context): undefined {
+function enterreference(this: ast.Context): undefined {
   return void (this.data.referenceType = 'collapsed')
 }
 
 /**
  * Exit a `mailto:` link.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitautolinkemail(this: Context, token: Token): undefined {
+function exitautolinkemail(this: ast.Context, token: parse.Token): undefined {
   exitdata.call(this, token)
 
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'link', 'expected link on stack')
@@ -211,27 +213,28 @@ function exitautolinkemail(this: Context, token: Token): undefined {
 /**
  * Exit an autolink.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitautolinkprotocol(this: Context, token: Token): undefined {
+function exitautolinkprotocol(this: ast.Context,
+  token: parse.Token): undefined {
   exitdata.call(this, token)
 
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'link', 'expected link on stack')
@@ -243,25 +246,26 @@ function exitautolinkprotocol(this: Context, token: Token): undefined {
 /**
  * Exit an atx `heading`.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitatxheadingsequence(this: Context, token: Token): undefined {
+function exitatxheadingsequence(this: ast.Context,
+  token: parse.Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'heading', 'expected heading on stack')
@@ -284,25 +288,26 @@ function exitatxheadingsequence(this: Context, token: Token): undefined {
 /**
  * Exit a character reference.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitcharacterreference(this: Context, token: Token): undefined {
+function exitcharacterreference(this: ast.Context,
+  token: parse.Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} tail
+   * @const {ast.Node | undefined} tail
    */
-  const tail: Node | undefined = this.stack.pop()
+  const tail: ast.Node | undefined = this.stack.pop()
 
   ok(tail, 'expected `tail`')
   ok(tail.position, 'expected `tail.position`')
@@ -314,21 +319,21 @@ function exitcharacterreference(this: Context, token: Token): undefined {
 /**
  * Exit a character reference marker.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitcharacterreferencemarker(
-  this: Context,
-  token: Token
+  this: ast.Context,
+  token: parse.Token
 ): undefined {
   ok(
     token.type === 'characterReferenceMarkerNumeric' ||
@@ -342,21 +347,21 @@ function exitcharacterreferencemarker(
 /**
  * Exit a character reference value.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitcharacterreferencevalue(
-  this: Context,
-  token: Token
+  this: ast.Context,
+  token: parse.Token
 ): undefined {
   const { characterReferenceType } = this.data
 
@@ -397,9 +402,9 @@ function exitcharacterreferencevalue(
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} tail
+   * @const {ast.Node | undefined} tail
    */
-  const tail: Node | undefined = this.stack.at(-1)
+  const tail: ast.Node | undefined = this.stack.at(-1)
 
   ok(tail, 'expected `tail`')
   ok('value' in tail, 'expected `tail.value`')
@@ -411,15 +416,16 @@ function exitcharacterreferencevalue(
 /**
  * Exit fenced `code`.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodefenced(this: Context): undefined {
+function exitcodefenced(this: ast.Context): undefined {
   /**
    * The node value.
    *
@@ -430,9 +436,9 @@ function exitcodefenced(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'code', 'expected code on stack')
@@ -446,15 +452,16 @@ function exitcodefenced(this: Context): undefined {
 /**
  * Exit a fenced code fence.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfence(this: Context): undefined {
+function exitcodefencedfence(this: ast.Context): undefined {
   if (!this.data.flowCodeInside) {
     this.buffer()
     this.data.flowCodeInside = true
@@ -466,15 +473,16 @@ function exitcodefencedfence(this: Context): undefined {
 /**
  * Exit fenced code info.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfenceinfo(this: Context): undefined {
+function exitcodefencedfenceinfo(this: ast.Context): undefined {
   /**
    * The language info to attach.
    *
@@ -485,9 +493,9 @@ function exitcodefencedfenceinfo(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'code', 'expected code on stack')
@@ -499,15 +507,16 @@ function exitcodefencedfenceinfo(this: Context): undefined {
 /**
  * Exit fenced code metadata.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodefencedfencemeta(this: Context): undefined {
+function exitcodefencedfencemeta(this: ast.Context): undefined {
   /**
    * The metadata to attach.
    *
@@ -518,9 +527,9 @@ function exitcodefencedfencemeta(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'code', 'expected code on stack')
@@ -532,15 +541,16 @@ function exitcodefencedfencemeta(this: Context): undefined {
 /**
  * Exit indented code.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodeindented(this: Context): undefined {
+function exitcodeindented(this: ast.Context): undefined {
   /**
    * The node value.
    *
@@ -551,9 +561,9 @@ function exitcodeindented(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'code', 'expected code on stack')
@@ -565,15 +575,16 @@ function exitcodeindented(this: Context): undefined {
 /**
  * Exit code text.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitcodetext(this: Context): undefined {
+function exitcodetext(this: ast.Context): undefined {
   /**
    * The node value.
    *
@@ -584,9 +595,9 @@ function exitcodetext(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'inlineCode', 'expected inline code on stack')
@@ -598,25 +609,25 @@ function exitcodetext(this: Context): undefined {
 /**
  * Exit data.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitdata(this: Context, token: Token): undefined {
+function exitdata(this: ast.Context, token: parse.Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} tail
+   * @const {ast.Node | undefined} tail
    */
-  const tail: Node | undefined = this.stack.pop()
+  const tail: ast.Node | undefined = this.stack.pop()
 
   ok(tail, 'expected a `node` to be on the stack')
   ok('value' in tail, 'expected a `literal` to be on the stack')
@@ -631,16 +642,16 @@ function exitdata(this: Context, token: Token): undefined {
 /**
  * Exit a definition destination string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitdefinitiondestinationstring(this: Context): undefined {
+function exitdefinitiondestinationstring(this: ast.Context): undefined {
   /**
    * The definition url.
    *
@@ -651,9 +662,9 @@ function exitdefinitiondestinationstring(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'definition', 'expected definition on stack')
@@ -665,21 +676,21 @@ function exitdefinitiondestinationstring(this: Context): undefined {
 /**
  * Exit a definition label string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitdefinitionlabelstring(
-  this: Context,
-  token: Token
+  this: ast.Context,
+  token: parse.Token
 ): undefined {
   /**
    * The definition label.
@@ -691,9 +702,9 @@ function exitdefinitionlabelstring(
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'definition', 'expected definition on stack')
@@ -708,16 +719,16 @@ function exitdefinitionlabelstring(
 /**
  * Exit a definition title string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitdefinitiontitlestring(this: Context): undefined {
+function exitdefinitiontitlestring(this: ast.Context): undefined {
   /**
    * The definition title.
    *
@@ -728,9 +739,9 @@ function exitdefinitiontitlestring(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'definition', 'expected definition on stack')
@@ -742,32 +753,32 @@ function exitdefinitiontitlestring(this: Context): undefined {
 /**
  * Exit a hard break.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exithardbreak(this: Context): undefined {
+function exithardbreak(this: ast.Context): undefined {
   return void (this.data.atHardBreak = true)
 }
 
 /**
  * Exit raw HTML.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exithtml(this: Context): undefined {
+function exithtml(this: ast.Context): undefined {
   /**
    * The node value.
    *
@@ -778,9 +789,9 @@ function exithtml(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'html', 'expected html on stack')
@@ -792,22 +803,22 @@ function exithtml(this: Context): undefined {
 /**
  * Exit an image.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitimage(this: Context): undefined {
+function exitimage(this: ast.Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'image', 'expected image on stack')
@@ -842,22 +853,22 @@ function exitimage(this: Context): undefined {
 /**
  * Exit a label.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitlabel(this: Context): undefined {
+function exitlabel(this: ast.Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} tail
+   * @const {ast.Node | undefined} tail
    */
-  const tail: Node | undefined = this.stack.at(-1)
+  const tail: ast.Node | undefined = this.stack.at(-1)
 
   ok(tail, 'expected node on stack')
   ok(tail.type === 'fragment', 'expected fragment on stack')
@@ -872,9 +883,9 @@ function exitlabel(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(
@@ -897,19 +908,19 @@ function exitlabel(this: Context): undefined {
 /**
  * Exit label text.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitlabeltext(this: Context, token: Token): undefined {
+function exitlabeltext(this: ast.Context, token: parse.Token): undefined {
   /**
    * The label text.
    *
@@ -920,9 +931,9 @@ function exitlabeltext(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} ancestor
+   * @const {ast.Node | undefined} ancestor
    */
-  const ancestor: Node | undefined = this
+  const ancestor: ast.Node | undefined = this
     .stack[this.stack.length - 2]
 
   ok(ancestor, 'expected ancestor on stack')
@@ -942,25 +953,25 @@ function exitlabeltext(this: Context, token: Token): undefined {
 /**
  * Exit a line ending.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitlineending(this: Context, token: Token): undefined {
+function exitlineending(this: ast.Context, token: parse.Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected `node`')
 
@@ -971,9 +982,9 @@ function exitlineending(this: Context, token: Token): undefined {
     /**
      * The last child node.
      *
-     * @const {Node} tail
+     * @const {ast.Node} tail
      */
-    const tail: Node = node.children[node.children.length - 1]!
+    const tail: ast.Node = node.children[node.children.length - 1]!
 
     ok(tail, 'expected `tail`')
     ok(tail.position, 'expected tail to have a starting position')
@@ -999,21 +1010,22 @@ function exitlineending(this: Context, token: Token): undefined {
 /**
  * Exit a link.
  *
- * @see {@linkcode Context}
+ * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitlink(this: Context): undefined {
+function exitlink(this: ast.Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'link', 'expected link on stack')
@@ -1048,19 +1060,19 @@ function exitlink(this: Context): undefined {
 /**
  * Exit a reference string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
-function exitreferencestring(this: Context, token: Token): undefined {
+function exitreferencestring(this: ast.Context, token: parse.Token): undefined {
   /**
    * The reference string.
    *
@@ -1071,9 +1083,9 @@ function exitreferencestring(this: Context, token: Token): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(
@@ -1095,32 +1107,32 @@ function exitreferencestring(this: Context, token: Token): undefined {
 /**
  * Exit a resource.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitresource(this: Context): undefined {
+function exitresource(this: ast.Context): undefined {
   return void (this.data.inReference = undefined)
 }
 
 /**
  * Exit a resource destination string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitresourcedestinationstring(this: Context): undefined {
+function exitresourcedestinationstring(this: ast.Context): undefined {
   /**
    * The resource destination.
    *
@@ -1131,9 +1143,9 @@ function exitresourcedestinationstring(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(
@@ -1148,16 +1160,16 @@ function exitresourcedestinationstring(this: Context): undefined {
 /**
  * Exit a resource title string.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitresourcetitlestring(this: Context): undefined {
+function exitresourcetitlestring(this: ast.Context): undefined {
   /**
    * The resource destination title.
    *
@@ -1168,9 +1180,9 @@ function exitresourcetitlestring(this: Context): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(
@@ -1185,44 +1197,44 @@ function exitresourcetitlestring(this: Context): undefined {
 /**
  * Exit a setext heading.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitsetextheading(this: Context): undefined {
+function exitsetextheading(this: ast.Context): undefined {
   return void (this.data.setextHeadingSlurpLineEnding = undefined)
 }
 
 /**
  * Exit a setext heading line sequence.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode parse.Token}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {undefined}
  */
 function exitsetextheadinglinesequence(
-  this: Context,
-  token: Token
+  this: ast.Context,
+  token: parse.Token
 ): undefined {
   /**
    * The last node on the stack.
    *
-   * @const {Node | undefined} node
+   * @const {ast.Node | undefined} node
    */
-  const node: Node | undefined = this.stack.at(-1)
+  const node: ast.Node | undefined = this.stack.at(-1)
 
   ok(node, 'expected node on stack')
   ok(node.type === 'heading', 'expected heading on stack')
@@ -1237,15 +1249,15 @@ function exitsetextheadinglinesequence(
 /**
  * Exit setext heading text.
  *
- * @see {@linkcode Context}
  * @see {@linkcode Handle}
+ * @see {@linkcode ast.Context}
  *
  * @type {Handle}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
  * @return {undefined}
  */
-function exitsetextheadingtext(this: Context): undefined {
+function exitsetextheadingtext(this: ast.Context): undefined {
   return void (this.data.setextHeadingSlurpLineEnding = true)
 }

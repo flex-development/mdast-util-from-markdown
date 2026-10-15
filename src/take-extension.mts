@@ -3,36 +3,32 @@
  * @module mdast-util-from-markdown/takeExtension
  */
 
-import type {
-  Config,
-  Extension,
-  TakeExtension
-} from '@flex-development/mark/ast'
+import type * as ast from '@flex-development/mark/ast'
 
 /**
  * Merge `extension` into the `combined` configuration.
  *
- * @see {@linkcode Config}
- * @see {@linkcode Extension}
- * @see {@linkcode TakeExtension}
+ * @see {@linkcode ast.Config}
+ * @see {@linkcode ast.Extension}
+ * @see {@linkcode ast.TakeExtension}
  *
- * @type {TakeExtension}
+ * @type {ast.TakeExtension}
  *
  * @this {void}
  *
- * @param {Config} combined
+ * @param {ast.Config} combined
  *  The current configuration
- * @param {Extension} extension
+ * @param {ast.Extension} extension
  *  The extension to merge
- * @param {keyof Extension | undefined} [field]
+ * @param {keyof ast.Extension | undefined} [field]
  *  The current `extension` field
  * @return {undefined}
  */
 function takeExtension(
   this: void,
-  combined: Config,
-  extension: Extension,
-  field?: keyof Extension | undefined
+  combined: ast.Config,
+  extension: ast.Extension,
+  field?: keyof ast.Extension | undefined
 ): undefined {
   if (field === 'canContainEols') {
     /**

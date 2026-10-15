@@ -1,8 +1,8 @@
-import type * as mark from '@flex-development/mark/ast'
+import type { Point } from '@flex-development/mark/parse'
 import type { Compiler } from '@flex-development/mdast-util-from-markdown'
 
 declare module '@flex-development/mdast-util-from-markdown' {
-  interface CompileContext extends mark.CompileContext {
+  interface CompileContext {
     /**
      * Turn parser events into a syntax tree.
      *
@@ -11,5 +11,14 @@ declare module '@flex-development/mdast-util-from-markdown' {
      * @internal
      */
     compile: Compiler
+
+    /**
+     * The point before the first character in the content.
+     *
+     * @see {@linkcode Point}
+     *
+     * @internal
+     */
+    from: Point
   }
 }

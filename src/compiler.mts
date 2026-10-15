@@ -3,7 +3,7 @@
  * @module mdast-util-from-markdown/compiler
  */
 
-import { createCompiler } from '@flex-development/mark-compiler'
+import { create } from '@flex-development/mark-compiler/ast'
 import type {
   Buffer,
   Closer,
@@ -93,7 +93,7 @@ function compiler(this: void, options?: Options | null | undefined): Compiler {
    *
    * @const {CompileContext} context
    */
-  const context: CompileContext = createCompiler({
+  const context: CompileContext = create({
     extensions,
     from: options?.from,
     preprocess,

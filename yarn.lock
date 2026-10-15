@@ -1902,16 +1902,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/mark-compiler@npm:1.0.0-alpha.9":
-  version: 1.0.0-alpha.9
-  resolution: "@flex-development/mark-compiler@npm:1.0.0-alpha.9"
+"@flex-development/mark-compiler@npm:1.0.0-alpha.10":
+  version: 1.0.0-alpha.10
+  resolution: "@flex-development/mark-compiler@npm:1.0.0-alpha.10"
   dependencies:
-    "@flex-development/mark": "npm:1.0.0-alpha.9"
+    "@flex-development/mark": "npm:1.0.0-alpha.12"
     "@flex-development/mark-util-symbol": "npm:3.1.0"
     "@flex-development/unist-util-builder": "npm:2.0.0"
     "@flex-development/unist-util-stringify-position": "npm:1.0.1"
     devlop: "npm:1.1.0"
-  checksum: 10/8552220216111f55459c92c6d9eb1f876d544352a16f236b01aa835adead7e2d47b98ae5b456b3819dc49ae7bcab472cdaadaac3662feb421a6c3309a4fc9f6e
+  checksum: 10/ced0feb9b9f6bc2ca90ac462c0aae24153dc88cc5d9b14aa34135c401bd8ed8bda6e03d221f915150349e7b3a40038c371b2550866ff123004d55710d47d796f
   languageName: node
   linkType: hard
 
@@ -1922,13 +1922,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/mark@npm:1.0.0-alpha.9":
-  version: 1.0.0-alpha.9
-  resolution: "@flex-development/mark@npm:1.0.0-alpha.9"
+"@flex-development/mark@npm:1.0.0-alpha.12":
+  version: 1.0.0-alpha.12
+  resolution: "@flex-development/mark@npm:1.0.0-alpha.12"
   dependencies:
     "@flex-development/unist-util-types": "npm:1.6.1"
     "@types/unist": "npm:3.0.3"
-  checksum: 10/990804f42cd310b55d5f2179acf4c98313432f0b93533fedfcecb3ed87dcc31f421014a428046435f13b5bbe3d156ac2daf000f815ce4530ebeabd0de1f3f08b
+  checksum: 10/c96a84760f6171e29660485b4f719f85add4918c565538c9fc6fe175876469169ebab349f4f7f0dd03649facdb42287c66b8585c0c74fdf53d505688da10402f
   languageName: node
   linkType: hard
 
@@ -1946,8 +1946,8 @@ __metadata:
     "@flex-development/export-regex": "npm:2.0.0"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/import-regex": "npm:3.0.0"
-    "@flex-development/mark": "npm:1.0.0-alpha.9"
-    "@flex-development/mark-compiler": "npm:1.0.0-alpha.9"
+    "@flex-development/mark": "npm:1.0.0-alpha.12"
+    "@flex-development/mark-compiler": "npm:1.0.0-alpha.10"
     "@flex-development/pathe": "npm:4.0.2"
     "@flex-development/remark-preset": "npm:1.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"

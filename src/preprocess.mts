@@ -3,8 +3,8 @@
  * @module mdast-util-from-markdown/preprocess
  */
 
-import type { Context, Preprocess } from '@flex-development/mark/ast'
-import type { Event } from '@flex-development/mark/parse'
+import type * as ast from '@flex-development/mark/ast'
+import type * as parse from '@flex-development/mark/parse'
 import { ok } from 'devlop'
 import { types } from 'micromark-util-symbol'
 import prepareList from './internal/prepare-list.mts'
@@ -14,19 +14,19 @@ export default preprocess
 /**
  * Prepare `events` before compilation begins.
  *
- * @see {@linkcode Context}
- * @see {@linkcode Event}
- * @see {@linkcode Preprocess}
+ * @see {@linkcode ast.Context}
+ * @see {@linkcode ast.Preprocess}
+ * @see {@linkcode parse.Event}
  *
- * @type {Preprocess}
+ * @type {ast.Preprocess}
  *
- * @this {Context}
+ * @this {ast.Context}
  *
- * @param {Event[]} events
+ * @param {parse.Event[]} events
  *  The current list of events
  * @return {undefined}
  */
-function preprocess(this: Context, events: Event[]): undefined {
+function preprocess(this: ast.Context, events: parse.Event[]): undefined {
   /**
    * The `enter` event positions for each list.
    *

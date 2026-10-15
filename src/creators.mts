@@ -3,8 +3,8 @@
  * @module mdast-util-from-markdown/creators
  */
 
-import type { CreateNode } from '@flex-development/mark/ast'
-import type { Token } from '@flex-development/mark/parse'
+import type * as ast from '@flex-development/mark/ast'
+import type * as parse from '@flex-development/mark/parse'
 import { u } from '@flex-development/unist-util-builder'
 import type {
   Blockquote,
@@ -49,10 +49,10 @@ export {
 /**
  * Create a blockquote.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Blockquote}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Blockquote>}
+ * @type {ast.CreateNode<Blockquote>}
  *
  * @this {void}
  *
@@ -66,10 +66,10 @@ function blockquote(this: void): Blockquote {
 /**
  * Create flow code.
  *
+ * @see {@linkcode ast.CreateNode}
  * @see {@linkcode Code}
- * @see {@linkcode CreateNode}
  *
- * @type {CreateNode<Code>}
+ * @type {ast.CreateNode<Code>}
  *
  * @this {void}
  *
@@ -83,10 +83,10 @@ function code(this: void): Code {
 /**
  * Create a definition.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Definition}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Definition>}
+ * @type {ast.CreateNode<Definition>}
  *
  * @this {void}
  *
@@ -106,10 +106,10 @@ function definition(this: void): Definition {
 /**
  * Create an emphasis.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Emphasis}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Emphasis>}
+ * @type {ast.CreateNode<Emphasis>}
  *
  * @this {void}
  *
@@ -124,9 +124,9 @@ function emphasis(this: void): Emphasis {
  * Create a hard break.
  *
  * @see {@linkcode Break}
- * @see {@linkcode CreateNode}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Break>}
+ * @type {ast.CreateNode<Break>}
  *
  * @this {void}
  *
@@ -140,10 +140,10 @@ function hardBreak(this: void): Break {
 /**
  * Create a heading.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Heading}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Heading>}
+ * @type {ast.CreateNode<Heading>}
  *
  * @this {void}
  *
@@ -161,10 +161,10 @@ function heading(this: void): Heading {
 /**
  * Create raw HTML.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Html}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Html>}
+ * @type {ast.CreateNode<Html>}
  *
  * @this {void}
  *
@@ -178,10 +178,10 @@ function html(this: void): Html {
 /**
  * Create an image.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Image}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Image>}
+ * @type {ast.CreateNode<Image>}
  *
  * @this {void}
  *
@@ -195,10 +195,10 @@ function image(this: void): Image {
 /**
  * Create code text.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode InlineCode}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<InlineCode>}
+ * @type {ast.CreateNode<InlineCode>}
  *
  * @this {void}
  *
@@ -212,10 +212,10 @@ function inlineCode(this: void): InlineCode {
 /**
  * Create a link.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Link}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Link>}
+ * @type {ast.CreateNode<Link>}
  *
  * @this {void}
  *
@@ -229,20 +229,20 @@ function link(this: void): Link {
 /**
  * Create a list.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode List}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.CreateNode}
+ * @see {@linkcode parse.Token}
  *
- * @type {CreateNode<List>}
+ * @type {ast.CreateNode<List>}
  *
  * @this {void}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {List}
  *  The new node
  */
-function list(this: void, token: Token): List {
+function list(this: void, token: parse.Token): List {
   return u('list', {
     children: [],
     ordered: token.type === 'listOrdered',
@@ -255,20 +255,20 @@ function list(this: void, token: Token): List {
 /**
  * Create a list item.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode ListItem}
- * @see {@linkcode Token}
+ * @see {@linkcode ast.CreateNode}
+ * @see {@linkcode parse.Token}
  *
- * @type {CreateNode<ListItem>}
+ * @type {ast.CreateNode<ListItem>}
  *
  * @this {void}
  *
- * @param {Token} token
+ * @param {parse.Token} token
  *  The corresponding token
  * @return {ListItem}
  *  The new node
  */
-function listItem(this: void, token: Token): ListItem {
+function listItem(this: void, token: parse.Token): ListItem {
   return u('listItem', {
     checked: null,
     children: [],
@@ -280,10 +280,10 @@ function listItem(this: void, token: Token): ListItem {
 /**
  * Create a paragraph.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Paragraph}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Paragraph>}
+ * @type {ast.CreateNode<Paragraph>}
  *
  * @this {void}
  *
@@ -297,10 +297,10 @@ function paragraph(this: void): Paragraph {
 /**
  * Create strong text.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Strong}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Strong>}
+ * @type {ast.CreateNode<Strong>}
  *
  * @this {void}
  *
@@ -314,10 +314,10 @@ function strong(this: void): Strong {
 /**
  * Create text.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode Text}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<Text>}
+ * @type {ast.CreateNode<Text>}
  *
  * @this {void}
  *
@@ -331,10 +331,10 @@ function text(this: void): Text {
 /**
  * Create a thematic break.
  *
- * @see {@linkcode CreateNode}
  * @see {@linkcode ThematicBreak}
+ * @see {@linkcode ast.CreateNode}
  *
- * @type {CreateNode<ThematicBreak>}
+ * @type {ast.CreateNode<ThematicBreak>}
  *
  * @this {void}
  *

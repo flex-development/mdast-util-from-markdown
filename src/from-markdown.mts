@@ -5,7 +5,7 @@
 
 import type { Options } from '@flex-development/mdast-util-from-markdown'
 import type { Root } from 'mdast'
-import { parse, postprocess, preprocess } from 'micromark'
+import * as micromark from 'micromark'
 import type { Encoding, Value } from 'micromark-util-types'
 import compiler from './compiler.mts'
 
@@ -91,10 +91,10 @@ function fromMarkdown(
   }
 
   return compiler(options)(
-    postprocess(
-      parse(options)
+    micromark.postprocess(
+      micromark.parse(options)
         .document(options?.from ?? undefined)
-        .write(preprocess()(value ?? '', encoding, true))
+        .write(micromark.preprocess()(value ?? '', encoding, true))
     )
   )
 }
