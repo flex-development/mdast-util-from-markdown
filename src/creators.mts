@@ -4,6 +4,7 @@
  */
 
 import type { CreateNode } from '@flex-development/mark/ast'
+import type { Token } from '@flex-development/mark/parse'
 import { u } from '@flex-development/unist-util-builder'
 import type {
   Blockquote,
@@ -23,7 +24,6 @@ import type {
   Text,
   ThematicBreak
 } from 'mdast'
-import type { Token } from 'micromark-util-types'
 
 export {
   blockquote,
