@@ -165,7 +165,7 @@
     "editorconfig": "3.0.2",
     "eslint": "9.39.5",
     "growl": "1.10.5",
-    "happy-dom": "21.0.1",
+    "happy-dom": "21.0.3",
     "hast-util-from-html": "2.0.3",
     "hast-util-to-html": "9.0.5",
     "husky": "9.1.7",
