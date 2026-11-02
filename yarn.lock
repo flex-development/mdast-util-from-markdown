@@ -1980,7 +1980,7 @@ __metadata:
     growl: "npm:1.10.5"
     happy-dom: "npm:21.0.4"
     hast-util-from-html: "npm:2.0.3"
-    hast-util-to-html: "npm:9.0.5"
+    hast-util-to-html: "npm:9.0.6"
     husky: "npm:9.1.7"
     is-ci: "npm:4.1.0"
     mdast-util-from-markdown: "npm:2.1.0"
@@ -6897,9 +6897,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-to-html@npm:9.0.5":
-  version: 9.0.5
-  resolution: "hast-util-to-html@npm:9.0.5"
+"hast-util-to-html@npm:9.0.6":
+  version: 9.0.6
+  resolution: "hast-util-to-html@npm:9.0.6"
   dependencies:
     "@types/hast": "npm:^3.0.0"
     "@types/unist": "npm:^3.0.0"
@@ -6912,7 +6912,7 @@ __metadata:
     space-separated-tokens: "npm:^2.0.0"
     stringify-entities: "npm:^4.0.0"
     zwitch: "npm:^2.0.4"
-  checksum: 10/4278e5246f43adf7a30bf3b87db4a4e628b5362b8c149eb4360bf7e0f731f81fa31e4e844e8090d1dd5f739d0884678f8165b28f97c14139e4da4f945f9ff5f7
+  checksum: 10/2004c7a890f69c5c3a0b12a185a4767bdaef7d282f140be77225ccfd2ca08382dc93a5c2a5d7519a1aa18079f3e8818cabcec25d6202c52ece4df53de1283583
   languageName: node
   linkType: hard
 
