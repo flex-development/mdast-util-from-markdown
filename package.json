@@ -166,7 +166,7 @@
     "eslint": "9.39.5",
     "growl": "1.10.5",
     "happy-dom": "21.0.4",
-    "hast-util-from-html": "2.0.3",
+    "hast-util-from-html": "2.1.0",
     "hast-util-to-html": "9.0.6",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
