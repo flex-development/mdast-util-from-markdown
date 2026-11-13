@@ -1902,33 +1902,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flex-development/mark-compiler@npm:1.0.0-alpha.11":
-  version: 1.0.0-alpha.11
-  resolution: "@flex-development/mark-compiler@npm:1.0.0-alpha.11"
+"@flex-development/mark-compiler@npm:1.0.0-alpha.13":
+  version: 1.0.0-alpha.13
+  resolution: "@flex-development/mark-compiler@npm:1.0.0-alpha.13"
   dependencies:
-    "@flex-development/mark": "npm:1.0.0-alpha.13"
-    "@flex-development/mark-util-symbol": "npm:1.0.0-alpha.13"
+    "@flex-development/mark": "npm:1.0.0-alpha.15"
+    "@flex-development/mark-util-symbol": "npm:1.0.0-alpha.15"
     "@flex-development/unist-util-builder": "npm:2.0.0"
     "@flex-development/unist-util-stringify-position": "npm:1.0.1"
     devlop: "npm:1.1.0"
-  checksum: 10/c36b8b115576e7071979b1161e0c1157b1cfcef6ead0e89d82eb15b1f539a02d44d21d31f32eac0e3cd2d24579167d85e9e21c1a6cf9cb3c235ff677d2d2be05
+  checksum: 10/0f07bd6eed9b8169bcdeab3704a05a44ede60554416ff90ccbf31f40b64b697c5c07c9b08c725fc055d8636e4d43ef246b7a3daaf246c02bb22ef88d476e551d
   languageName: node
   linkType: hard
 
-"@flex-development/mark-util-symbol@npm:1.0.0-alpha.13":
-  version: 1.0.0-alpha.13
-  resolution: "@flex-development/mark-util-symbol@npm:1.0.0-alpha.13"
-  checksum: 10/344db6bfee324a0d70e51c7c835591277aa46dd043c775c4bc1d443aac7d51c67e86e94e8e6470b917e1d628f4fbd74bde738db2eb2261496c9b9e0ee42c54db
+"@flex-development/mark-util-symbol@npm:1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@flex-development/mark-util-symbol@npm:1.0.0-alpha.15"
+  checksum: 10/20ca980091bd66620a765604aed665a9d8afd8f78c3b46d31d754834e6fb74ad435754d7841d84b9dd441f6d245c2edcdbc3364501698c441b5c8b02952b6d60
   languageName: node
   linkType: hard
 
-"@flex-development/mark@npm:1.0.0-alpha.13":
-  version: 1.0.0-alpha.13
-  resolution: "@flex-development/mark@npm:1.0.0-alpha.13"
+"@flex-development/mark@npm:1.0.0-alpha.15":
+  version: 1.0.0-alpha.15
+  resolution: "@flex-development/mark@npm:1.0.0-alpha.15"
   dependencies:
     "@flex-development/unist-util-types": "npm:1.6.1"
+    "@types/debug": "npm:4.1.13"
     "@types/unist": "npm:3.0.3"
-  checksum: 10/e77a1039d16354e122f3f35b02216794c22b1a035c45ea1ceca16dc574f8006feff95e7ecb50c1791161c8273db1250eda78673155db73f1a860a277e85ef71c
+  checksum: 10/2675f735beba146b10855a669b672b1b7f767b032f5f1d1c89917bf21c13b60dc7d220ffcfd4a34f57e64d198430fd0c0e152bb24d9192ef0331d958114b7d68
   languageName: node
   linkType: hard
 
@@ -1946,8 +1947,8 @@ __metadata:
     "@flex-development/export-regex": "npm:2.0.0"
     "@flex-development/grease": "npm:3.0.0-alpha.9"
     "@flex-development/import-regex": "npm:3.0.0"
-    "@flex-development/mark": "npm:1.0.0-alpha.13"
-    "@flex-development/mark-compiler": "npm:1.0.0-alpha.11"
+    "@flex-development/mark": "npm:1.0.0-alpha.15"
+    "@flex-development/mark-compiler": "npm:1.0.0-alpha.13"
     "@flex-development/pathe": "npm:4.0.2"
     "@flex-development/remark-preset": "npm:1.0.0"
     "@flex-development/tutils": "npm:6.0.0-alpha.25"
