@@ -162,7 +162,7 @@
     "cross-env": "10.1.0",
     "cspell": "10.5.0",
     "dprint": "0.64.3",
-    "editorconfig": "3.0.2",
+    "editorconfig": "4.0.1",
     "eslint": "9.39.5",
     "growl": "1.10.5",
     "happy-dom": "21.0.4",
